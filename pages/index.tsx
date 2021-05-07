@@ -2,11 +2,12 @@ import Head from 'next/head'
 import Layout, { siteTitle } from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
 import { getSortedPostsData } from '../lib/posts'
-import Link from 'next/link'
+// import Link from 'next/link'
 import Date from '../components/date'
 import { GetStaticProps } from 'next'
-import { Text, Heading, Flex, Stack } from '@chakra-ui/react'
+import { Flex, Stack, Button, useColorModeValue } from '@chakra-ui/react'
 import DarkModeSwitch from '../components/darkmodeswtich'
+import NextChakraLink from '../components/NextChakraLink'
 
 export default function Home({
   allPostsData
@@ -17,6 +18,7 @@ export default function Home({
     id: string
   }[]
 }) {
+  // const color = useColorModeValue("white", "gray.800")
   return (
     <Stack 
     as="main"
@@ -46,9 +48,9 @@ export default function Home({
           <ul className={utilStyles.list}>
             {allPostsData.map(({ id, date, title }) => (
               <li className={utilStyles.listItem} key={id}>
-                <Link href={`/posts/${id}`}>
-                  <a>{title}</a>
-                </Link>
+                <NextChakraLink href={`/posts/${id}`}>
+                  <Button>{title}</Button>
+                </NextChakraLink>
                 <br />
                 <small className={utilStyles.lightText}>
                   <Date dateString={date} />
