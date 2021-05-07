@@ -6,7 +6,7 @@ import { getSortedPostsData } from '../lib/posts'
 import Date from '../components/date'
 import { GetStaticProps } from 'next'
 import { Flex, Stack, Button, useColorModeValue } from '@chakra-ui/react'
-import DarkModeSwitch from '../components/darkmodeswtich'
+// import DarkModeSwitch from '../components/darkmodeswtich'
 import NextChakraLink from '../components/NextChakraLink'
 
 export default function Home({
@@ -33,12 +33,13 @@ export default function Home({
           w="1400px"
           pt={4}
         >
-          <DarkModeSwitch/>
+          {/* <DarkModeSwitch/> */}
         </Flex> 
         <Layout home>
         <Head>
           <title>{siteTitle}</title>
         </Head>
+        
         <section className={utilStyles.headingMd}>
           <p>[Plain Self Introduction]</p>
           <br/>
