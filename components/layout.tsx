@@ -47,7 +47,16 @@ export default function Layout({
           <DarkModeSwitch/>
         </StickyNav>
         </header>
-        <main>{children}</main>
+        <Flex
+          align="center"
+          justify="center"
+          padding={{
+            base: "15vw 10vw", // 0-80em
+            xl: "6em 0" // 80em+
+          }}
+        >
+          <main>{children}</main>
+        </Flex>
         {!home && (
           <div className={mainStyles.backToHome}>
             <Link href="/">

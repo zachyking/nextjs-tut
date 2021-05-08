@@ -8,6 +8,7 @@ import { GetStaticProps } from 'next'
 import { Flex, Stack, Button, useColorModeValue } from '@chakra-ui/react'
 // import DarkModeSwitch from '../components/darkmodeswtich'
 import NextChakraLink from '../components/NextChakraLink'
+import Hero from '../components/Hero'
 // import { PageTransition } from 'next-page-transitions'
 
 export default function Home({
@@ -39,6 +40,8 @@ export default function Home({
             <title>{siteTitle}</title>
           </Head>
         
+         <Hero></Hero>
+
         {/* <section className={utilStyles.headingMd}>
           <p>[Plain Self Introduction]</p>
           <br/>

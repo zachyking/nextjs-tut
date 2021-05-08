@@ -14,64 +14,77 @@ export default function DarkModeSwitch() {
           flexDir="column"
           align="center"
           margin="0"
-          top="0px"
+          
         >
             <Flex
               pos="fixed"
               align="center"
               w="100vw"
+              top="0px"
+              left="0px"
+              right="0px"
               bgColor={isDark ? ("gray.900") : ("gray.50")}
+              as="nav"
+              justify="center"
+              wrap="wrap"
 
             >
-                <Flex 
-                  display={['none', 'none', 'flex', 'flex']}
+                <Flex
+                  align="center"
+                  w="60em"
                 >
-                    <NextChakraLink href="/">
-                        <Button
-                          variant="ghost"
-                          aria-label="Home"
-                          my={5}
-                          w="100%"
-                        >Home</Button>
-                    </NextChakraLink>
-                    <NextChakraLink href="/posts/pre-rendering">
-                        <Button
-                          variant="ghost"
-                          aria-label="Home"
-                          my={5}
-                          w="100%"
-                        >Pre Rendering</Button>
-                    </NextChakraLink>
-                    <NextChakraLink href="/posts/ssg-ssr">
-                        <Button
-                          variant="ghost"
-                          aria-label="Home"
-                          my={5}
-                          w="100%"
-                        >SSG-SSR</Button>
-                    </NextChakraLink>
-                </Flex>
+                  <Flex 
+                    justify={["center", "space-between", "flex-end", "flex-end"]}
+                    display={['none', 'none', 'flex', 'flex']}
+                  >
+                      <NextChakraLink href="/">
+                          <Button
+                            variant="ghost"
+                            aria-label="Home"
+                            my={5}
+                            w="100%"
+                          >Home</Button>
+                      </NextChakraLink>
+                      <NextChakraLink href="/posts/pre-rendering">
+                          <Button
+                            variant="ghost"
+                            aria-label="Home"
+                            my={5}
+                            w="100%"
+                          >Pre Rendering</Button>
+                      </NextChakraLink>
+                      <NextChakraLink href="/posts/ssg-ssr">
+                          <Button
+                            variant="ghost"
+                            aria-label="Home"
+                            my={5}
+                            w="100%"
+                          >SSG-SSR</Button>
+                      </NextChakraLink>
+                  </Flex>
 
-                <IconButton 
-                  aria-label="Open Menu"
-                  variant="ghost"
-                  size="lg"
-                  icon={isDark ? (
-                    <img src="/cardano-logo-light.svg" />
-                 ) : (
-                        <img src="/cardano-logo.svg" />
-                    )
-                }
-                  display={['flex', 'flex', 'none', 'none']}
-                  onClick={ () => changeDisplay('flex')}
-                />
+                  <IconButton 
+                    margin="0.25em 0.5em"
+                    aria-label="Open Menu"
+                    variant="ghost"
+                    size="lg"
+                    icon={isDark ? (
+                      <img src="/cardano-logo-light.svg" />
+                  ) : (
+                          <img src="/cardano-logo.svg" />
+                      )
+                  }
+                    display={['flex', 'flex', 'none', 'none']}
+                    onClick={ () => changeDisplay('flex')}
+                  />
 
-                <Switch
-                  ml={2}
-                  color="green"
-                  isChecked={isDark}
-                  onChange={toggleColorMode}
-                />
+                  <Switch
+                    margin="0.25em 0.5em"
+                    color="blue"
+                    isChecked={isDark}
+                    onChange={toggleColorMode}
+                  />
+              </Flex>
             </Flex>
             
             <Flex
@@ -85,6 +98,7 @@ export default function DarkModeSwitch() {
               display={display}
               overflowY="auto"
               flexDir="column"
+              as="nav"
             >
                 <Flex justify="flex-end"
                 >
