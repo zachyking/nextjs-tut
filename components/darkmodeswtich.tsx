@@ -51,15 +51,20 @@ export default function DarkModeSwitch() {
 
                 <IconButton 
                   aria-label="Open Menu"
+                  variant="ghost"
                   size="lg"
-                  mr={2}
-                  icon={<HamburgerIcon />}
+                  icon={isDark ? (
+                    <img src="/cardano-logo.svg" />
+                 ) : (
+                        <img src="/cardano-logo-light.svg" />
+                    )
+                }
                   display={['flex', 'flex', 'none', 'none']}
                   onClick={ () => changeDisplay('flex')}
                 />
 
                 <Switch
-                  ml={10}
+                  ml={2}
                   color="green"
                   isChecked={isDark}
                   onChange={toggleColorMode}
@@ -68,7 +73,7 @@ export default function DarkModeSwitch() {
             
             <Flex
               w="100vw"
-              bgColor="gray.50"
+              bgColor={isDark ? ("gray.900") : ("gray.50")}
               zIndex={20}
               h="100vh"
               pos="fixed"
@@ -79,9 +84,9 @@ export default function DarkModeSwitch() {
               flexDir="column"
             >
                 <Flex justify="flex-end"
-                    zIndex={21}
                 >
                     <IconButton
+                      variant="ghost"
                       mt={2}
                       mr={2} 
                       aria-label="Close Menu"

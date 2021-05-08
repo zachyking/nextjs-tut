@@ -8,6 +8,7 @@ import { GetStaticProps } from 'next'
 import { Flex, Stack, Button, useColorModeValue } from '@chakra-ui/react'
 // import DarkModeSwitch from '../components/darkmodeswtich'
 import NextChakraLink from '../components/NextChakraLink'
+// import { PageTransition } from 'next-page-transitions'
 
 export default function Home({
   allPostsData
@@ -26,11 +27,9 @@ export default function Home({
     >
       <Flex 
         flexDirection="column"
-        maxWidth="1400px" 
       >
         <Flex
           direction="row"
-          w="1400px"
           pt={4}
         >
           {/* <DarkModeSwitch/> */}

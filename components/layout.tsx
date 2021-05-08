@@ -6,7 +6,7 @@ import Link from 'next/link'
 import DarkModeSwitch from '../components/darkmodeswtich'
 
 const name = 'dzcodes'
-export const siteTitle = 'Next.js Sample Website'
+export const siteTitle = 'Cardano Sounds NFT'
 
 export default function Layout({
   children,
@@ -18,56 +18,20 @@ export default function Layout({
   return (
     <div className={styles.container}>
       <Head>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/cardano-logo.svg" />
         <meta
           name="description"
-          content="Learn how to build a personal website using Next.js"
+          content="Get original music clip NFTs on Cardano!"
         />
         <meta
           property="og:image"
-          content={`https://og-image.vercel.app/${encodeURI(
-            siteTitle
-          )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.zeit.co%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
+          content="https://cryptologos.cc/logos/cardano-ada-logo.svg?v=010"
         />
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <header className={styles.header}>
-      <DarkModeSwitch/>
-
-        {/* {home ? (
-          <>
-            <Image
-              priority
-              src="/images/profile.jpeg"
-              className={utilStyles.borderCircle}
-              height={144}
-              width={144}
-              alt={name}
-            />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
-          </>
-        ) : (
-          <>
-            <Link href="/">
-              <a>
-                <Image
-                  priority
-                  src="/images/profile.jpeg"
-                  className={utilStyles.borderCircle}
-                  height={108}
-                  width={108}
-                  alt={name}
-                />
-              </a>
-            </Link>
-            <h2 className={utilStyles.headingLg}>
-              <Link href="/">
-                <a className={utilStyles.colorInherit}>{name}</a>
-              </Link>
-            </h2>
-          </>
-        )} */}
+        <DarkModeSwitch/>
       </header>
       <main>{children}</main>
       {!home && (
