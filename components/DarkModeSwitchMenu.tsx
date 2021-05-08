@@ -14,6 +14,7 @@ export default function DarkModeSwitch() {
           flexDir="column"
           align="center"
           margin="0"
+          top="0px"
         >
             <Flex
               pos="fixed"
