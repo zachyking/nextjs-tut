@@ -1,7 +1,7 @@
 import { useColorMode, Switch, Flex, Button, IconButton } from '@chakra-ui/react'
 import { useState } from 'react'
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
-import NextChakraLink from '../components/NextChakraLink'
+import NextChakraLink from './NextChakraLink'
 // import { MoonIcon, SunIcon } from '@chakra-ui/icons'
 
 
@@ -13,12 +13,14 @@ export default function DarkModeSwitch() {
         <Flex
           flexDir="column"
           align="center"
+          margin="0"
         >
             <Flex
               pos="fixed"
-              top="1rem"
-              right="1rem"
               align="center"
+              w="100vw"
+              bgColor={isDark ? ("gray.900") : ("gray.50")}
+
             >
                 <Flex 
                   display={['none', 'none', 'flex', 'flex']}
@@ -54,9 +56,9 @@ export default function DarkModeSwitch() {
                   variant="ghost"
                   size="lg"
                   icon={isDark ? (
-                    <img src="/cardano-logo.svg" />
+                    <img src="/cardano-logo-light.svg" />
                  ) : (
-                        <img src="/cardano-logo-light.svg" />
+                        <img src="/cardano-logo.svg" />
                     )
                 }
                   display={['flex', 'flex', 'none', 'none']}
@@ -107,6 +109,7 @@ export default function DarkModeSwitch() {
                           aria-label="Home"
                           my={5}
                           w="100%"
+                          onClick={ () => changeDisplay('none')}
                         >Home</Button>
                     </NextChakraLink>
                     <NextChakraLink href="/posts/pre-rendering">
@@ -115,6 +118,7 @@ export default function DarkModeSwitch() {
                           aria-label="Home"
                           my={5}
                           w="100%"
+                          onClick={ () => changeDisplay('none')}
                         >Pre Rendering</Button>
                     </NextChakraLink>
                     <NextChakraLink href="/posts/ssg-ssr">
@@ -123,6 +127,7 @@ export default function DarkModeSwitch() {
                           aria-label="Home"
                           my={5}
                           w="100%"
+                          onClick={ () => changeDisplay('none')}
                         >SSG-SSR</Button>
                     </NextChakraLink>
 

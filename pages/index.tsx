@@ -1,9 +1,9 @@
 import Head from 'next/head'
-import Layout, { siteTitle } from '../components/layout'
+import Layout, { siteTitle } from '../components/Layout'
 import utilStyles from '../styles/utils.module.css'
 import { getSortedPostsData } from '../lib/posts'
 // import Link from 'next/link'
-import Date from '../components/date'
+import Date from '../components/Date'
 import { GetStaticProps } from 'next'
 import { Flex, Stack, Button, useColorModeValue } from '@chakra-ui/react'
 // import DarkModeSwitch from '../components/darkmodeswtich'
@@ -35,11 +35,11 @@ export default function Home({
           {/* <DarkModeSwitch/> */}
         </Flex> 
         <Layout home>
-        <Head>
-          <title>{siteTitle}</title>
-        </Head>
+          <Head>
+            <title>{siteTitle}</title>
+          </Head>
         
-        <section className={utilStyles.headingMd}>
+        {/* <section className={utilStyles.headingMd}>
           <p>[Plain Self Introduction]</p>
           <br/>
         </section>
@@ -58,8 +58,9 @@ export default function Home({
               </li>
             ))}
           </ul>
-        </section>
-      </Layout> 
+          
+        </section> */}
+        </Layout> 
       </Flex>
       
     </Stack>

@@ -1,9 +1,10 @@
-import Layout from '../../components/layout'
+import Layout from '../../components/Layout'
 import { getAllPostIds, getPostData } from '../../lib/posts'
 import Head from 'next/head'
-import Date from '../../components/date'
+import Date from '../../components/Date'
 import utilStyles from '../../styles/utils.module.css'
 import { GetStaticProps, GetStaticPaths } from 'next'
+import { Stack } from '@chakra-ui/layout'
 
 
 export default function Post({
@@ -17,6 +18,7 @@ export default function Post({
 }) {
   return (
     <Layout>
+      <Stack></Stack>
       <Head>
         <title>{postData.title}</title>
       </Head>
@@ -27,6 +29,7 @@ export default function Post({
         </div>
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </article>
+
     </Layout>
   )
 }
