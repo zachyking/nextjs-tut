@@ -51,8 +51,8 @@ export default function Layout({
           align="center"
           justify="center"
           padding={{
-            base: "15vw 10vw", // 0-80em
-            xl: "6em 0" // 80em+
+            base: "10vw", // 0-80em
+            xl: "0" // 80em+
           }}
         >
           <main>{children}</main>
