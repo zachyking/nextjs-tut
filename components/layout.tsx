@@ -24,7 +24,7 @@ export default function Layout({
       align="top"
       maxW={{
         base: "auto", // 0-80em
-        xl: "1200px" // 80em+
+        xl: "60em" // 80em+
       }}
       m="0 auto"
     >
@@ -63,7 +63,7 @@ export default function Layout({
               <a>← Back to home</a>
             </Link>
           </div>
-        )}
+        )}   
       </div>
 
     </Flex>

@@ -19,3 +19,34 @@
   .backToHome {
     margin: 0 0 0;
   }
+
+  .disableEvents {
+    pointer-events: none;
+  }
+
+  .rotate {
+    color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(255, 0, 0, 0.3);
+    opacity: 0.8;
+    margin: -80%;
+
+    transform: rotate(15deg);
+  
+    /* Legacy vendor prefixes that you probably don't need... */
+  
+    /* Safari */
+    -webkit-transform: rotate(15deg);
+  
+    /* Firefox */
+    -moz-transform: rotate(15deg);
+  
+    /* IE */
+    -ms-transform: rotate(15deg);
+  
+    /* Opera */
+    -o-transform: rotate(15deg);
+  
+    /* Internet Explorer */
+    /* filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3); */
+  
+  }

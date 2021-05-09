@@ -1,7 +1,9 @@
 import { useColorMode, Switch, Flex, Button, IconButton } from '@chakra-ui/react'
 import { useState } from 'react'
-import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
+import { CloseIcon } from '@chakra-ui/icons'
 import NextChakraLink from './NextChakraLink'
+import mainStyles from './layout.module.css'
+
 // import { MoonIcon, SunIcon } from '@chakra-ui/icons'
 
 
@@ -53,14 +55,48 @@ export default function DarkModeSwitch() {
                             w="100%"
                           >Pre Rendering</Button>
                       </NextChakraLink>
-                      <NextChakraLink href="/posts/ssg-ssr">
+                      <NextChakraLink href="/collections/mysticwave">
                           <Button
                             variant="ghost"
                             aria-label="Home"
                             my={5}
                             w="100%"
-                          >SSG-SSR</Button>
+                          >Mystic waves</Button>
                       </NextChakraLink>
+                      <NextChakraLink href="/sale" className={mainStyles.disableEvents}>
+                        <Flex
+                          align="center"
+                          display="flex"
+                        >
+                            <Button
+                              disabled
+                              variant="ghost"
+                              aria-label="Home"
+                              my={5}
+                              w="100%"
+                            ><h1>Sale</h1></Button>
+                            <h2 className={mainStyles.rotate} >
+                              Coming Soon!
+                            </h2>
+                          </Flex>
+                      </NextChakraLink>
+                      {/* <NextChakraLink href="/marketplace" className={mainStyles.disableEvents}>
+                        <Flex
+                          align="center"
+                          display="flex"
+                        >
+                            <Button
+                              disabled
+                              variant="ghost"
+                              aria-label="Home"
+                              my={5}
+                              w="100%"
+                            >Marketplace</Button>
+                            <h1 className={mainStyles.rotate} >
+                              Coming Soon!
+                            </h1>
+                          </Flex>
+                      </NextChakraLink> */}
                   </Flex>
 
                   <IconButton 
@@ -77,13 +113,14 @@ export default function DarkModeSwitch() {
                     display={['flex', 'flex', 'none', 'none']}
                     onClick={ () => changeDisplay('flex')}
                   />
-
-                  <Switch
-                    margin="0.25em 0.5em"
-                    color="blue"
-                    isChecked={isDark}
-                    onChange={toggleColorMode}
-                  />
+                  <Flex right={0}>
+                    <Switch
+                      margin="0.25em 0.5em"
+                      color="blue"
+                      isChecked={isDark}
+                      onChange={toggleColorMode}
+                    />
+                  </Flex>
               </Flex>
             </Flex>
             
@@ -145,7 +182,24 @@ export default function DarkModeSwitch() {
                           onClick={ () => changeDisplay('none')}
                         >SSG-SSR</Button>
                     </NextChakraLink>
-
+                    <NextChakraLink href="/sale" className={mainStyles.disableEvents}>
+                      <Flex
+                        align="center"
+                        display="flex"
+                      >
+                        <Button
+                            disabled
+                            variant="ghost"
+                            aria-label="Home"
+                            my={5}
+                            w="100%"
+                            onClick={ () => changeDisplay('none')}
+                        >Sale</Button>
+                        <h2 className={mainStyles.rotate} >
+                          Coming Soon!
+                        </h2>
+                      </Flex>
+                    </NextChakraLink>
                 </Flex>
                 
             </Flex>

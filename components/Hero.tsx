@@ -16,7 +16,7 @@ export default function Hero() {
       align="center"
       justify={{ base: "center", md: "space-around", xl: "space-between" }}
       direction={{ base: "column-reverse", md: "row" }}
-      minH="70vh"
+      minH="90vh"
       px={8}
       mb={16}
     >
@@ -35,13 +35,14 @@ export default function Hero() {
           Cardano Sounds
         </Heading>
         <Heading
-          as="h2"
+          as="h1"
           size="xl"
           color="primary.800"
-          fontWeight="bold"
+          fontWeight="normal"
           lineHeight={1.5}
           textAlign={["center", "center", "left", "left"]}
           opacity="0.8"
+          z-index={-1}
         >
           NFT
         </Heading>
@@ -53,6 +54,8 @@ export default function Hero() {
               lineHeight="1"
               size="md"
               aria-label="Get NFT"
+              z-index={-1}
+
             >Get yours!</Button>
         </NextChakraLink>
         {/* <Link href="/sale">

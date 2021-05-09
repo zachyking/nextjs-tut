@@ -1,23 +1,25 @@
 import Head from 'next/head'
 import Layout, { siteTitle } from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
-import { getSortedPostsData } from '../lib/posts'
+import { getSortedCollectionsData } from '../lib/collections'
 // import Link from 'next/link'
 import Date from '../components/date'
 import { GetStaticProps } from 'next'
-import { Flex, Stack, Button, useColorModeValue } from '@chakra-ui/react'
+import { Flex, Stack, Heading, Button, useColorModeValue } from '@chakra-ui/react'
 // import DarkModeSwitch from '../components/darkmodeswtich'
 import NextChakraLink from '../components/NextChakraLink'
 import Hero from '../components/Hero'
+import CollectionList from '../components/CollectionList'
 // import { PageTransition } from 'next-page-transitions'
 
 export default function Home({
-  allPostsData
+  allCollectionsData
 }: {
-  allPostsData: {
+  allCollectionsData: {
     date: string
     title: string
     id: string
+    image: string
   }[]
 }) {
   // const color = useColorModeValue("white", "gray.800")
@@ -40,8 +42,9 @@ export default function Home({
             <title>{siteTitle}</title>
           </Head>
         
-         <Hero></Hero>
+          <Hero></Hero>
 
+          <CollectionList allCollectionsData={allCollectionsData}/>
         {/* <section className={utilStyles.headingMd}>
           <p>[Plain Self Introduction]</p>
           <br/>
@@ -71,10 +74,10 @@ export default function Home({
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const allPostsData = getSortedPostsData()
+  const allCollectionsData = getSortedCollectionsData()
   return {
     props: {
-      allPostsData
+      allCollectionsData
     }
   }
 }
