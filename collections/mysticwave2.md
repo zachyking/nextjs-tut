@@ -1,6 +1,6 @@
 ---
-title: 'Mystical wave 2'
-date: '2021-06-28'
+title: 'Mystical wave'
+date: '2021-05-28'
 image: '/images/examplePic.png'
 ---
 

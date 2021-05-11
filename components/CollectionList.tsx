@@ -14,6 +14,7 @@ import {
   Stack,
   Text,
   SimpleGrid,
+  useColorMode
 } from "@chakra-ui/react"
  
 export default function CollectionList({
@@ -29,7 +30,9 @@ export default function CollectionList({
   return (
     <Flex
       display="column"
-
+      align="center"
+      minH="90vh"
+      mb={12}
     >
       <Heading
         as="h2"
@@ -37,20 +40,31 @@ export default function CollectionList({
         fontWeight="normal"
         textAlign="center"
         display="block"
-        mb={5}
+        my={8}
       >
         Collections
       </Heading> 
       <Flex
-    
-        // justify="center"
-        // direction={["column", "row", "row"]}
+        display="column"
         align="center"
-        minH="70vh"
-        px={{ base: 0, md: 6 }}
-        mb={16}
+        minH="80vh"
+      // justify="center"
+        // direction={["column", "row", "row"]}
+        // align="center"
+        // px={{ base: 0, md: 6 }}
+        // mb={16}
       >
-        
+        {/* <Heading
+        as="h2"
+        size="xl"
+        fontWeight="normal"
+        textAlign="center"
+        display="block"
+        my={8}
+      >
+        Collections
+      </Heading> 
+         */}
         
         {/* {allCollectionsData.map(({ id, date, title, image }) => (
               <li className={utilStyles.listItem} key={id}>
@@ -64,9 +78,17 @@ export default function CollectionList({
               </li>
             ))} */}
        
-       <SimpleGrid columns={[1, 2, 3]} w="100%" spacing="10px">
-        {allCollectionsData.map(({ id, date, title, image }) => (
-            <Box key={id} borderRadius="2xl" borderWidth="1px" w="100%" height="300" > 
+        <SimpleGrid  w="100%" spacing="10px" minH="70vh" 
+          // display="flex"
+          align-items="center"
+          justify-content="center"
+          overflow-x="auto"
+          display={{ base: "column", md: "flex" }}
+
+        >
+          {allCollectionsData.map(({ id, date, title, image }) => (
+            <Box key={id} borderRadius="2xl" padding={5} borderWidth="1px" display={{ base: "block", md: "inline-block" }}
+            w={{ base: "80vw", md: "25vw" }} height="60vh" margin="auto"> 
               <Flex justify="center" display="column">
 
                 <NextChakraLink href={`/collections/${id}`} w="60%" margin="auto">
@@ -76,16 +98,9 @@ export default function CollectionList({
                 <Date dateString={date} />
               </Flex>
             </Box>
-
           ))}
-
-{/*         
-        <Box bg="tomato" w={60} height="80px"></Box>
-        <Box bg="tomato" w={60} height="80px"></Box>
-        <Box bg="tomato" w={60} height="80px"></Box> */}
-      </SimpleGrid>
-
-    </Flex>
+        </SimpleGrid>
+      </Flex>
     </Flex>
   )
 }

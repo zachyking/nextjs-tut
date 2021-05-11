@@ -5,12 +5,12 @@ import { PageTransition } from 'next-page-transitions'
 import Loader from '../components/Loader'
 import theme from '../styles/theme'
 
-const TIMEOUT: number = 400
+// const TIMEOUT: number = 400
 
 export default function App({ Component, pageProps }: AppProps) {
   return <>
         <ChakraProvider theme={theme}>
-        <PageTransition
+        {/* <PageTransition
           timeout={TIMEOUT}
           classNames="page-transition"
           loadingComponent={<Loader />}
@@ -20,9 +20,9 @@ export default function App({ Component, pageProps }: AppProps) {
             exit: 0,
           }}
           loadingClassNames="loading-indicator"
-        >
+        > */}
             <Component {...pageProps} />
-        </PageTransition>
+        {/* </PageTransition> */}
         </ChakraProvider>
         </>
 }

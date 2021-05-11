@@ -1,8 +1,8 @@
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head'
 import { Flex } from '@chakra-ui/react'
 import Image from 'next/image'
 import mainStyles from './layout.module.css'
-import { css, jsx } from "@emotion/react";
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 import DarkModeSwitch from './DarkModeSwitchMenu'
@@ -18,18 +18,43 @@ export default function Layout({
   children: React.ReactNode
   home?: boolean
 }) {
+  // useEffect(() => { 
+    
+  //    var prevScrollpos = window.pageYOffset;
+  // window.onscroll = function() {
+  // var currentScrollPos = window.pageYOffset;
+  //   if (prevScrollpos > currentScrollPos) {
+  //     console.log("navbar:")
+  //     console.log("nemiziiim")
+  //     document.getElementById("navbar").style.marginTop = "0px";
+  //   } else {
+  //     console.log("navbar:")
+  //     console.log("miziiim")
+  //     document.getElementById("navbar").style.marginTop = "-800px";
+  //   }
+  //   prevScrollpos = currentScrollPos;
+  // }}, [])
+  // useEffect(() => {
+  //   const script = document.createElement("script");
+  //   script.src = "http://localhost:8080/bundle.js";
+  //   script.async = true;
+  //   document.body.appendChild(script);
+  // },[])
+
   return (
     <Flex
       direction="column"
       align="top"
-      maxW={{
-        base: "auto", // 0-80em
-        xl: "60em" // 80em+
-      }}
+      w="100vw"
+    
+      // maxW={{
+      //   base: "auto", // 0-80em
+      //   xl: "60em" // 80em+
+      // }}
       m="0 auto"
     >
       <div className={mainStyles.container}>
-        <Head>
+        <Head >
           <link rel="icon" href="/cardano-logo.svg" />
           <meta
             name="description"
@@ -42,21 +67,24 @@ export default function Layout({
           <meta name="og:title" content={siteTitle} />
           <meta name="twitter:card" content="summary_large_image" />
         </Head>
-        <header className={mainStyles.header}>
-        <StickyNav className={mainStyles.stickyNav}>
-          <DarkModeSwitch/>
-        </StickyNav>
+        <header  className={mainStyles.header}>
+          {/* <Flex
+            direction="column"
+            align="top"
+            maxW={{
+              base: "auto", // 0-80em
+              xl: "60em" // 80em+
+            }}
+            m="0 auto"
+          > */}
+            <StickyNav className={mainStyles.stickyNav}>
+              <DarkModeSwitch/>
+            </StickyNav>
+          {/* </Flex> */}
         </header>
-        <Flex
-          align="center"
-          justify="center"
-          padding={{
-            base: "10vw", // 0-80em
-            xl: "0" // 80em+
-          }}
-        >
+        
           <main>{children}</main>
-        </Flex>
+        {/* </Flex> */}
         {!home && (
           <div className={mainStyles.backToHome}>
             <Link href="/">

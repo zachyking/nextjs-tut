@@ -1,6 +1,6 @@
 import { useColorMode, Switch, Flex, Button, IconButton } from '@chakra-ui/react'
-import { useState } from 'react'
-import { CloseIcon } from '@chakra-ui/icons'
+import { useState, useEffect } from 'react'
+import { CloseIcon, MoonIcon, SunIcon, HamburgerIcon } from '@chakra-ui/icons'
 import NextChakraLink from './NextChakraLink'
 import mainStyles from './layout.module.css'
 
@@ -11,12 +11,25 @@ export default function DarkModeSwitch() {
     const { colorMode, toggleColorMode } = useColorMode()
     const isDark = colorMode === 'dark'
     const [display, changeDisplay] = useState('none')
+    
+    useEffect(() => { 
+    
+      var prevScrollpos = window.pageYOffset;
+      window.onscroll = function() {
+      var currentScrollPos = window.pageYOffset;
+     if (prevScrollpos > currentScrollPos) {
+       document.getElementById("navbar").style.marginTop = "0px";
+     } else {
+       document.getElementById("navbar").style.marginTop = "-100px";
+     }
+     prevScrollpos = currentScrollPos;
+   }}, [])
+
     return (
         <Flex
           flexDir="column"
           align="center"
           margin="0"
-          
         >
             <Flex
               pos="fixed"
@@ -29,11 +42,13 @@ export default function DarkModeSwitch() {
               as="nav"
               justify="center"
               wrap="wrap"
+              id="navbar" 
+              transition="all 0.6s ease-out"
 
             >
                 <Flex
                   align="center"
-                  w="60em"
+                  w="100vw"
                 >
                   <Flex 
                     justify={["center", "space-between", "flex-end", "flex-end"]}
@@ -47,13 +62,13 @@ export default function DarkModeSwitch() {
                             w="100%"
                           >Home</Button>
                       </NextChakraLink>
-                      <NextChakraLink href="/posts/pre-rendering">
+                      <NextChakraLink href="#collections">
                           <Button
                             variant="ghost"
                             aria-label="Home"
                             my={5}
                             w="100%"
-                          >Pre Rendering</Button>
+                          >Collections</Button>
                       </NextChakraLink>
                       <NextChakraLink href="/collections/mysticwave">
                           <Button
@@ -80,23 +95,7 @@ export default function DarkModeSwitch() {
                             </h2>
                           </Flex>
                       </NextChakraLink>
-                      {/* <NextChakraLink href="/marketplace" className={mainStyles.disableEvents}>
-                        <Flex
-                          align="center"
-                          display="flex"
-                        >
-                            <Button
-                              disabled
-                              variant="ghost"
-                              aria-label="Home"
-                              my={5}
-                              w="100%"
-                            >Marketplace</Button>
-                            <h1 className={mainStyles.rotate} >
-                              Coming Soon!
-                            </h1>
-                          </Flex>
-                      </NextChakraLink> */}
+                      
                   </Flex>
 
                   <IconButton 
@@ -104,22 +103,23 @@ export default function DarkModeSwitch() {
                     aria-label="Open Menu"
                     variant="ghost"
                     size="lg"
-                    icon={isDark ? (
-                      <img src="/cardano-logo-light.svg" />
-                  ) : (
-                          <img src="/cardano-logo.svg" />
-                      )
-                  }
+                    icon={<HamburgerIcon />}
                     display={['flex', 'flex', 'none', 'none']}
                     onClick={ () => changeDisplay('flex')}
                   />
                   <Flex right={0}>
-                    <Switch
+                    <IconButton 
+                      variant="ghost"
+                      aria-label="Toggle Dark Switch"
+                      icon={isDark ? <SunIcon/> : <MoonIcon/>}
+                      onClick={toggleColorMode}
+                    />
+                    {/* <Switch
                       margin="0.25em 0.5em"
                       color="blue"
                       isChecked={isDark}
                       onChange={toggleColorMode}
-                    />
+                    /> */}
                   </Flex>
               </Flex>
             </Flex>
@@ -164,23 +164,23 @@ export default function DarkModeSwitch() {
                           onClick={ () => changeDisplay('none')}
                         >Home</Button>
                     </NextChakraLink>
-                    <NextChakraLink href="/posts/pre-rendering">
+                    <NextChakraLink  href="#collections">
                         <Button
                           variant="ghost"
                           aria-label="Home"
                           my={5}
                           w="100%"
                           onClick={ () => changeDisplay('none')}
-                        >Pre Rendering</Button>
+                        >Collections</Button>
                     </NextChakraLink>
-                    <NextChakraLink href="/posts/ssg-ssr">
+                    <NextChakraLink href="/collections/mysticwave">
                         <Button
                           variant="ghost"
                           aria-label="Home"
                           my={5}
                           w="100%"
                           onClick={ () => changeDisplay('none')}
-                        >SSG-SSR</Button>
+                        >Mystic waves</Button>
                     </NextChakraLink>
                     <NextChakraLink href="/sale" className={mainStyles.disableEvents}>
                       <Flex

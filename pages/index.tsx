@@ -6,8 +6,6 @@ import { getSortedCollectionsData } from '../lib/collections'
 import Date from '../components/date'
 import { GetStaticProps } from 'next'
 import { Flex, Stack, Heading, Button, useColorModeValue } from '@chakra-ui/react'
-// import DarkModeSwitch from '../components/darkmodeswtich'
-import NextChakraLink from '../components/NextChakraLink'
 import Hero from '../components/Hero'
 import CollectionList from '../components/CollectionList'
 // import { PageTransition } from 'next-page-transitions'
@@ -22,7 +20,7 @@ export default function Home({
     image: string
   }[]
 }) {
-  // const color = useColorModeValue("white", "gray.800")
+  const color = useColorModeValue("gray.50", "gray.900")
   return (
     <Stack 
     as="main"
@@ -35,37 +33,20 @@ export default function Home({
           direction="row"
           pt={4}
         >
-          {/* <DarkModeSwitch/> */}
         </Flex> 
         <Layout home>
           <Head>
             <title>{siteTitle}</title>
           </Head>
-        
           <Hero></Hero>
-
-          <CollectionList allCollectionsData={allCollectionsData}/>
-        {/* <section className={utilStyles.headingMd}>
-          <p>[Plain Self Introduction]</p>
-          <br/>
-        </section>
-        <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-          <h2 className={utilStyles.headingLg}>Blog</h2>
-          <ul className={utilStyles.list}>
-            {allPostsData.map(({ id, date, title }) => (
-              <li className={utilStyles.listItem} key={id}>
-                <NextChakraLink href={`/posts/${id}`}>
-                  <Button>{title}</Button>
-                </NextChakraLink>
-                <br />
-                <small className={utilStyles.lightText}>
-                  <Date dateString={date} />
-                </small>
-              </li>
-            ))}
-          </ul>
-
-        </section> */}
+          <Flex 
+          justify="center"
+          id="collections" 
+          bgColor={color}
+          // className={utilStyles.collections}
+          >
+            <CollectionList allCollectionsData={allCollectionsData}/>
+          </Flex>
         </Layout> 
       </Flex>
       
