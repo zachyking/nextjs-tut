@@ -48,36 +48,7 @@ export default function CollectionList({
         display="column"
         align="center"
         minH="80vh"
-      // justify="center"
-        // direction={["column", "row", "row"]}
-        // align="center"
-        // px={{ base: 0, md: 6 }}
-        // mb={16}
       >
-        {/* <Heading
-        as="h2"
-        size="xl"
-        fontWeight="normal"
-        textAlign="center"
-        display="block"
-        my={8}
-      >
-        Collections
-      </Heading> 
-         */}
-        
-        {/* {allCollectionsData.map(({ id, date, title, image }) => (
-              <li className={utilStyles.listItem} key={id}>
-                <NextChakraLink href={`/posts/${id}`}>
-                  <Button>{title}</Button>
-                </NextChakraLink>
-                <br />
-                <small className={utilStyles.lightText}>
-                  <Date dateString={date} />
-                </small>
-              </li>
-            ))} */}
-       
         <SimpleGrid  w="100%" spacing="10px" minH="70vh" 
           // display="flex"
           align-items="center"

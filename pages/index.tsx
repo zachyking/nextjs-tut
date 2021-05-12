@@ -8,6 +8,7 @@ import { GetStaticProps } from 'next'
 import { Flex, Stack, Heading, Button, useColorModeValue } from '@chakra-ui/react'
 import Hero from '../components/Hero'
 import CollectionList from '../components/CollectionList'
+import ContactUs from '../components/ContactUs'
 // import { PageTransition } from 'next-page-transitions'
 
 export default function Home({
@@ -29,11 +30,6 @@ export default function Home({
       <Flex 
         flexDirection="column"
       >
-        <Flex
-          direction="row"
-          pt={4}
-        >
-        </Flex> 
         <Layout home>
           <Head>
             <title>{siteTitle}</title>
@@ -47,6 +43,13 @@ export default function Home({
           >
             <CollectionList allCollectionsData={allCollectionsData}/>
           </Flex>
+          <Flex 
+          justify="center"
+          id="contact" 
+          >
+            <ContactUs />
+          </Flex>
+
         </Layout> 
       </Flex>
       

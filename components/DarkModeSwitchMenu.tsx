@@ -65,7 +65,7 @@ export default function DarkModeSwitch() {
                       <NextChakraLink href="#collections">
                           <Button
                             variant="ghost"
-                            aria-label="Home"
+                            aria-label="Collections"
                             my={5}
                             w="100%"
                           >Collections</Button>
@@ -73,10 +73,18 @@ export default function DarkModeSwitch() {
                       <NextChakraLink href="/collections/mysticwave">
                           <Button
                             variant="ghost"
-                            aria-label="Home"
+                            aria-label="Mystic waves"
                             my={5}
                             w="100%"
                           >Mystic waves</Button>
+                      </NextChakraLink>
+                      <NextChakraLink href="#contact">
+                          <Button
+                            variant="ghost"
+                            aria-label="Contact"
+                            my={5}
+                            w="100%"
+                          >Contact</Button>
                       </NextChakraLink>
                       <NextChakraLink href="/sale" className={mainStyles.disableEvents}>
                         <Flex
@@ -86,7 +94,7 @@ export default function DarkModeSwitch() {
                             <Button
                               disabled
                               variant="ghost"
-                              aria-label="Home"
+                              aria-label="Sale"
                               my={5}
                               w="100%"
                             ><h1>Sale</h1></Button>
@@ -167,7 +175,7 @@ export default function DarkModeSwitch() {
                     <NextChakraLink  href="#collections">
                         <Button
                           variant="ghost"
-                          aria-label="Home"
+                          aria-label="Collections"
                           my={5}
                           w="100%"
                           onClick={ () => changeDisplay('none')}
@@ -176,11 +184,20 @@ export default function DarkModeSwitch() {
                     <NextChakraLink href="/collections/mysticwave">
                         <Button
                           variant="ghost"
-                          aria-label="Home"
+                          aria-label="Mystic waves"
                           my={5}
                           w="100%"
                           onClick={ () => changeDisplay('none')}
                         >Mystic waves</Button>
+                    </NextChakraLink>
+                    <NextChakraLink href="#contact">
+                        <Button
+                          variant="ghost"
+                          aria-label="Contact"
+                          my={5}
+                          w="100%"
+                          onClick={ () => changeDisplay('none')}
+                        >Contact</Button>
                     </NextChakraLink>
                     <NextChakraLink href="/sale" className={mainStyles.disableEvents}>
                       <Flex
@@ -190,7 +207,7 @@ export default function DarkModeSwitch() {
                         <Button
                             disabled
                             variant="ghost"
-                            aria-label="Home"
+                            aria-label="Sale"
                             my={5}
                             w="100%"
                             onClick={ () => changeDisplay('none')}

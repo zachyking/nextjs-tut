@@ -22,7 +22,7 @@ export default function Hero() {
         >
           <Stack
             spacing={2}
-            w={{ base: "80%", md: "40%" }}
+            w={{ base: "80%", md: "50%" }}
             align={["center", "center", "flex-start", "flex-start"]}
           >
             <Heading
@@ -59,12 +59,12 @@ export default function Hero() {
             </NextChakraLink>
           </Stack>
 
-          <Box w={{ base: "80%", sm: "60%", md: "50%" }} mb={{ base: 0, md: 0 }} mt={{ base: 6, md: 0 }}>
+          <Box w={{ base: "80%", sm: "60%", md: "40%" }} mb={{ base: 0, md: 0 }} mt={{ base: 6, md: 0 }}>
             <Image src="/cardanosounds1.svg" size="100%" rounded="50%" shadow="2xl" />
           </Box>
 
         </Flex>
-    
+
   )
 }
  
