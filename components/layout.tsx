@@ -1,11 +1,15 @@
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head'
+import { Flex } from '@chakra-ui/react'
 import Image from 'next/image'
-import styles from './layout.module.css'
+import mainStyles from './layout.module.css'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
+import DarkModeSwitch from './DarkModeSwitchMenu'
+import StickyNav from "react-sticky-nav";
 
 const name = 'dzcodes'
-export const siteTitle = 'Next.js Sample Website'
+export const siteTitle = 'Cardano Sounds NFT'
 
 export default function Layout({
   children,
@@ -14,66 +18,83 @@ export default function Layout({
   children: React.ReactNode
   home?: boolean
 }) {
+  // useEffect(() => { 
+    
+  //    var prevScrollpos = window.pageYOffset;
+  // window.onscroll = function() {
+  // var currentScrollPos = window.pageYOffset;
+  //   if (prevScrollpos > currentScrollPos) {
+  //     console.log("navbar:")
+  //     console.log("nemiziiim")
+  //     document.getElementById("navbar").style.marginTop = "0px";
+  //   } else {
+  //     console.log("navbar:")
+  //     console.log("miziiim")
+  //     document.getElementById("navbar").style.marginTop = "-800px";
+  //   }
+  //   prevScrollpos = currentScrollPos;
+  // }}, [])
+  // useEffect(() => {
+  //   const script = document.createElement("script");
+  //   script.src = "http://localhost:8080/bundle.js";
+  //   script.async = true;
+  //   document.body.appendChild(script);
+  // },[])
+
   return (
-    <div className={styles.container}>
-      <Head>
-        <link rel="icon" href="/favicon.ico" />
-        <meta
-          name="description"
-          content="Learn how to build a personal website using Next.js"
-        />
-        <meta
-          property="og:image"
-          content={`https://og-image.vercel.app/${encodeURI(
-            siteTitle
-          )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.zeit.co%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
-        />
-        <meta name="og:title" content={siteTitle} />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Head>
-      <header className={styles.header}>
-        {home ? (
-          <>
-            <Image
-              priority
-              src="/images/profile.jpeg"
-              className={utilStyles.borderCircle}
-              height={144}
-              width={144}
-              alt={name}
-            />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
-          </>
-        ) : (
-          <>
+    <Flex
+      direction="column"
+      align="top"
+      w="100vw"
+    
+      // maxW={{
+      //   base: "auto", // 0-80em
+      //   xl: "60em" // 80em+
+      // }}
+      m="0 auto"
+    >
+      <div className={mainStyles.container}>
+        <Head >
+          <link rel="icon" href="/cardano-logo.svg" />
+          <meta
+            name="description"
+            content="Get music clip NFT with original sound on Cardano blockchain!"
+          />
+          <meta
+            property="og:image"
+            content="https://cryptologos.cc/logos/cardano-ada-logo.svg?v=010"
+          />
+          <meta name="og:title" content={siteTitle} />
+          <meta name="twitter:card" content="summary_large_image" />
+        </Head>
+        <header  className={mainStyles.header}>
+          {/* <Flex
+            direction="column"
+            align="top"
+            maxW={{
+              base: "auto", // 0-80em
+              xl: "60em" // 80em+
+            }}
+            m="0 auto"
+          > */}
+            <StickyNav className={mainStyles.stickyNav}>
+              <DarkModeSwitch/>
+            </StickyNav>
+          {/* </Flex> */}
+        </header>
+        
+          <main>{children}</main>
+        {/* </Flex> */}
+        {!home && (
+          <div className={mainStyles.backToHome}>
             <Link href="/">
-              <a>
-                <Image
-                  priority
-                  src="/images/profile.jpg"
-                  className={utilStyles.borderCircle}
-                  height={108}
-                  width={108}
-                  alt={name}
-                />
-              </a>
+              <a>← Back to home</a>
             </Link>
-            <h2 className={utilStyles.headingLg}>
-              <Link href="/">
-                <a className={utilStyles.colorInherit}>{name}</a>
-              </Link>
-            </h2>
-          </>
-        )}
-      </header>
-      <main>{children}</main>
-      {!home && (
-        <div className={styles.backToHome}>
-          <Link href="/">
-            <a>← Back to home</a>
-          </Link>
-        </div>
-      )}
-    </div>
+          </div>
+        )}   
+      </div>
+
+    </Flex>
+
   )
 }
