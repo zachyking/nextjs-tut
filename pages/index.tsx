@@ -1,57 +1,75 @@
 import Head from 'next/head'
 import Layout, { siteTitle } from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
-import { getSortedPostsData } from '../lib/posts'
-import Link from 'next/link'
+import { getSortedCollectionsData } from '../lib/collections'
+// import Link from 'next/link'
 import Date from '../components/date'
 import { GetStaticProps } from 'next'
+import { Flex, Stack, Heading, Button, useColorModeValue } from '@chakra-ui/react'
+import Hero from '../components/Hero'
+import CollectionList from '../components/CollectionList'
+import ContactUs from '../components/ContactUs'
+import Footer from '../components/Footer'
+// import { PageTransition } from 'next-page-transitions'
 
 export default function Home({
-  allPostsData
+  allCollectionsData
 }: {
-  allPostsData: {
+  allCollectionsData: {
     date: string
     title: string
     id: string
+    image: string
   }[]
 }) {
+  const color = useColorModeValue("gray.50", "gray.900")
   return (
-    <Layout home>
-      <Head>
-        <title>{siteTitle}</title>
-      </Head>
-      <section className={utilStyles.headingMd}>
-        <p>[Plain Self Introduction]</p>
-        <p>
-          (This is a sample website - you’ll be building a site like this in{' '}
-          <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
-        </p>
-      </section>
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
-        <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
-            <li className={utilStyles.listItem} key={id}>
-              <Link href={`/posts/${id}`}>
-                <a>{title}</a>
-              </Link>
-              <br />
-              <small className={utilStyles.lightText}>
-                <Date dateString={date} />
-              </small>
-            </li>
-          ))}
-        </ul>
-      </section>
-    </Layout>
+    <Stack 
+    as="main"
+    align="center" 
+    >
+      <Flex 
+        flexDirection="column"
+      >
+        <Layout home>
+          <Head>
+            <title>{siteTitle}</title>
+          </Head>
+          <Hero></Hero>
+          <Flex 
+          justify="center"
+          id="collections" 
+          bgColor={color}
+          // className={utilStyles.collections}
+          >
+            <CollectionList allCollectionsData={allCollectionsData}/>
+          </Flex>
+          <Flex 
+          justify="center"
+          id="contact" 
+          >
+            <ContactUs />
+          </Flex>
+          
+          <Flex 
+            justify="center"
+            bgColor={color}
+          >
+
+            <Footer></Footer>
+          </Flex>
+        </Layout> 
+      </Flex>
+      
+    </Stack>
   )
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const allPostsData = getSortedPostsData()
+  const allCollectionsData = getSortedCollectionsData()
   return {
     props: {
-      allPostsData
+      allCollectionsData
     }
   }
 }
