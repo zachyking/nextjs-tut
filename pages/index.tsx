@@ -9,6 +9,7 @@ import { Flex, Stack, Heading, Button, useColorModeValue } from '@chakra-ui/reac
 import Hero from '../components/Hero'
 import CollectionList from '../components/CollectionList'
 import ContactUs from '../components/ContactUs'
+import Footer from '../components/Footer'
 // import { PageTransition } from 'next-page-transitions'
 
 export default function Home({
@@ -49,7 +50,14 @@ export default function Home({
           >
             <ContactUs />
           </Flex>
+          
+          <Flex 
+            justify="center"
+            bgColor={color}
+          >
 
+            <Footer></Footer>
+          </Flex>
         </Layout> 
       </Flex>
       

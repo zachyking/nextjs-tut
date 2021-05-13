@@ -4,7 +4,8 @@ import {
   Button,
   Flex,
   Heading,
-  Stack
+  Stack,
+  IconButton
 } from "@chakra-ui/react"
  
 export default function ContacUs() {
@@ -14,7 +15,7 @@ export default function ContacUs() {
             display="column"
             align="center"
             justify="center"
-            minH="100vh"
+            minH="50vw"
             mb={12}
         >
             <Stack
@@ -28,8 +29,8 @@ export default function ContacUs() {
                 size="md"
                 fontWeight="normal"
                 // color="primary.800"
-                textAlign="center"
                 mt="50%"
+                textAlign="center"
                 >
                     Do you have any idea what we could do better?
                 </Heading>

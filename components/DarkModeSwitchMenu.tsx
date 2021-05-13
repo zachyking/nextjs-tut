@@ -70,14 +70,14 @@ export default function DarkModeSwitch() {
                             w="100%"
                           >Collections</Button>
                       </NextChakraLink>
-                      <NextChakraLink href="/collections/mysticwave">
+                      {/* <NextChakraLink href="/collections/mysticwave">
                           <Button
                             variant="ghost"
                             aria-label="Mystic waves"
                             my={5}
                             w="100%"
                           >Mystic waves</Button>
-                      </NextChakraLink>
+                      </NextChakraLink> */}
                       <NextChakraLink href="#contact">
                           <Button
                             variant="ghost"
@@ -181,15 +181,15 @@ export default function DarkModeSwitch() {
                           onClick={ () => changeDisplay('none')}
                         >Collections</Button>
                     </NextChakraLink>
-                    <NextChakraLink href="/collections/mysticwave">
+                    {/* <NextChakraLink href="/collections/mysticwave">
                         <Button
                           variant="ghost"
                           aria-label="Mystic waves"
                           my={5}
                           w="100%"
                           onClick={ () => changeDisplay('none')}
-                        >Mystic waves</Button>
-                    </NextChakraLink>
+                        >Mystic waves</Button> 
+                    </NextChakraLink>*/}
                     <NextChakraLink href="#contact">
                         <Button
                           variant="ghost"
