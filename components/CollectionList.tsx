@@ -1,9 +1,9 @@
 import React from "react"
-
+import { useContextualRouting } from '../contextual-modal/contextual-modal'
 import NextChakraLink from './NextChakraLink'
 import utilStyles from '../styles/utils.module.css'
 import Date from './date'
-
+import { useRouter } from 'next/router'
 
 import {
   Box,
@@ -17,6 +17,11 @@ import {
   useColorMode
 } from "@chakra-ui/react"
  
+interface ContextualHref {
+  makeContextualHref: (extraQueryParams: { [key: string]: any }) => string
+  returnHref: string;
+  
+}
 export default function CollectionList({
   allCollectionsData
 }: {
@@ -27,6 +32,22 @@ export default function CollectionList({
     id: string
   }[]
 }) {
+  const router = useRouter();
+  const { makeContextualHref, returnHref }: ContextualHref = useContextualRouting();
+  
+  const openModal = () =>
+    router.push(
+      makeContextualHref({ id: 'mysticwave' }),
+      '/collections/mysticwave',
+      {
+        shallow: true,
+      }
+    );
+
+  const closeModal = () =>
+    router.push(returnHref, undefined, { shallow: true });
+  
+  
   return (
     <Flex
       display="column"
@@ -59,10 +80,13 @@ export default function CollectionList({
         >
           {allCollectionsData.map(({ id, date, title, image }) => (
             <Box key={id} borderRadius="2xl" padding={5} borderWidth="1px" display={{ base: "block", md: "inline-block" }}
-            w={{ base: "80vw", md: "25vw" }} height="60vh" margin="auto"> 
+            w={["80vw", "40vw", "25vw"]} height="60vh" margin="auto" onClick={ openModal }> 
               <Flex justify="center" display="column">
 
-                <NextChakraLink href={`/collections/${id}`} w="60%" margin="auto">
+                <NextChakraLink w="60%" margin="auto" //href={`/collections/${id}`} 
+                  href={makeContextualHref({ id: id })}
+                  as={`/collections/${id}`}
+                >
                   <Button>{title}</Button>
                 </NextChakraLink>
                 <img src={image} />

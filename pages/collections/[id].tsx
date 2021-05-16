@@ -45,7 +45,6 @@ export default function Collection({
         </Box>
         <Stack
           spacing={4}
-          // w={{ base: "90%", md: "90%" }}
           w="90%"
           align={["center", "center", "flex-start", "flex-start"]}
         >
@@ -59,8 +58,6 @@ export default function Collection({
       </Flex>
 
     </Layout>
-        
-    
   )
 }
 
@@ -80,37 +77,3 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     }
   }
 }
-
-
-  {/*//   <Flex
-    //     align="center"
-    //     justify={{ base: "center", md: "space-around", xl: "space-between" }}
-    //     direction={{ base: "column-reverse", md: "row" }}
-    //     minH="70vh"
-    //     px={8}
-    //     mb={16}
-    //   >
-    //     <Head>
-    //       <title>{collectionData.title}</title>
-    //     </Head>
-    //     <Box w={{ base: "100%", sm: "100%", md: "100%" }} mt={{ base: 4, md: 0 }}>
-    //         <Image src="/images/examplePic.png" size="100%" rounded="1rem" shadow="2xl" />
-    //       </Box>
-    //      <Flex
-    //       justify={{ base: "center", md: "space-around", xl: "space-between" }}
-    //       direction={{ base: "column-reverse", md: "row" }}
-    //       minH="70vh"
-    //       mb={16}
-    //     > 
-    //     <Flex>
-    //       <article>
-    //         <h1 className={utilStyles.headingXl}>{collectionData.title}</h1>
-    //         <div className={utilStyles.lightText}>
-    //           <Date dateString={collectionData.date} />
-    //         </div>
-    //         <div dangerouslySetInnerHTML={{ __html: collectionData.contentHtml }} />
-    //       </article>
-    //     </Flex>
-    //      </Flex> 
-    //   </Flex>
-    // </Layout>*/}

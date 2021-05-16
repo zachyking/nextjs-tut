@@ -55,7 +55,7 @@ export default function Layout({
     >
       <div className={mainStyles.container}>
         <Head >
-          <link rel="icon" href="/cardano-logo.svg" />
+          <link rel="icon" href="/card-wave2.svg" />
           <meta
             name="description"
             content="Get music clip NFT with original sound on Cardano blockchain!"
