@@ -48,9 +48,8 @@ export function getAllCollectionsIds() {
 }
 
 export async function getCollectionData(id: string) {
-  const fullPath = path.join(collectionsDirectory, id+".md")
+  const fullPath = path.join(collectionsDirectory, `${id}.md`)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
-
   // Use gray-matter to parse the post metadata section
   const matterResult = matter(fileContents)
 
@@ -58,7 +57,8 @@ export async function getCollectionData(id: string) {
   const processedContent = await remark()
     .use(html)
     .process(matterResult.content)
-  const contentHtml = processedContent ? processedContent.toString() : ""
+
+  const contentHtml = processedContent.toString()
 
   // Combine the data with the id and contentHtml
   return {

@@ -19,55 +19,15 @@ import {
 } from "@chakra-ui/react"
 import { GetStaticProps } from "next"
 import { getCollectionData } from "../lib/collections"
- 
+import { CollectionData } from "../interfaces/interfaces"
 interface ContextualHref {
   makeContextualHref: (extraQueryParams: { [key: string]: any }) => string
   returnHref: string
   
 }
 
-interface CollectionData {
-    id: string
-    date: string
-    title: string
-    image: string
-    contentHtml: string
-}
-export default function Collection(id: {id: string}) {
-
-    const router = useRouter();
-    const { makeContextualHref, returnHref }: ContextualHref = useContextualRouting()
+export default function Collection(collectionData: CollectionData) {
     
-    const [collectionData, changeCollection] = useState<object>();
-
-    useEffect(() => { 
-        //changeCollection(getCollectionData(id.id))
-        fetch('/api/collections', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.parse("mysticwave")
-          }).then((val) => {
-              console.log(val)
-          })
-
-    }, [])
-
-    const openModal = () => {
-        router.push(
-            makeContextualHref({ id: 'mysticwave' }),
-            '/collections/mysticwave',
-            {
-            shallow: true,
-            }
-        );
-    }
-
-    const closeModal = () => {
-        router.push(returnHref, undefined, { shallow: true });
-    }
-
     return (
         <>
             <Flex
@@ -84,19 +44,19 @@ export default function Collection(id: {id: string}) {
                 <Box w="100%" mt={{ base: 4, md: 0 }} align="center" >
                   <Image src="/images/examplePic.png" size="100%" rounded="1rem" shadow="2xl" />
                 </Box>
-                {typeof(collectionData) !== "undefined" ??
                 <Stack
                   spacing={4}
                   // w={{ base: "90%", md: "90%" }}
                   w="90%"
                   align="center"
                 >
-                  <h1 className={utilStyles.headingLg}>{typeof(collectionData) !== "undefined" ?? collectionData['title']}</h1>
+                  <h1 className={utilStyles.headingLg}>{collectionData.title}</h1>
                   <div className={utilStyles.lightText}>
-                    <Date dateString={typeof(collectionData) !== "undefined" ?? collectionData['date']} />
+                    <Text> {collectionData.date}
+                     </Text>
                   </div>
-                  <div dangerouslySetInnerHTML={{ __html: typeof(collectionData) !== "undefined" ?? collectionData['contentHtml'] }} />
-                </Stack> }
+                  <div dangerouslySetInnerHTML={{ __html: collectionData.contentHtml }} />
+                </Stack> 
 
             </Flex>
         </>

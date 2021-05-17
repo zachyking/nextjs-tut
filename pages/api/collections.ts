@@ -7,34 +7,32 @@ import { getCollectionData } from '../../lib/collections'
 
 import { NextApiRequest, NextApiResponse } from 'next'
 import { CollectionData } from "../../interfaces/interfaces"
+import Collection from '../../components/Collection'
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
   
-    if(!req.body) res.status(400).json({ data: "not found"})
-  
-    const body = JSON.stringify(req.body)
+    const body = req.body
     res.status(200).json(
-        await getCollectionData(body)
+        coll1Data
     )
 }
 
-export async function getCollectionDataa(id: string) {
-    const fullPath = path.join("http://localhost:3000/collections", `${id}.md`)
-    const fileContents = fs.readFileSync(fullPath, 'utf8')
-  
-    // Use gray-matter to parse the post metadata section
-    const matterResult = matter(fileContents)
+const collection1Html = 
+`
+<div>
+    <p>Next.js has two forms of pre-rendering: <strong>Static Generation</strong> and <strong>Server-side Rendering</strong>. The difference is in <strong>when</strong> it generates the HTML for a page.</p>
+    <ul>
+        <li><strong>Static Generation</strong> is the pre-rendering method that generates the HTML at <strong>build time</strong>. The pre-rendered HTML is then <em>reused</em> on each request.</li>
+        <li><strong>Server-side Rendering</strong> is the pre-rendering method that generates the HTML on <strong>each request</strong>.</li>
+    </ul>
+    <Text>Importantly, Next.js lets you <strong>choose</strong> which pre-rendering form to use for each page. You can create a "hybrid" Next.js app by using Static Generation for most pages and using Server-side Rendering for others.</Text>
+</div>
+`
+const coll1Data: CollectionData = { 
+    contentHtml: collection1Html, 
+    date: "2021-05-28",  
+    id: "mysticwave",
+    image: "/card-wave2.svg",
+    title: "Mystical waves"
 
-    // Use remark to convert markdown into HTML string
-    const processedContent = await remark()
-      .use(html)
-      .process(matterResult.content)
-    const contentHtml = processedContent.toString()
-  
-    // Combine the data with the id and contentHtml
-    return {
-      id,
-      contentHtml,
-      ...(matterResult.data as { date: string; title: string; image: string })
-    }
-  }
+}

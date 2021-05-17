@@ -90,7 +90,7 @@ export default function CollectionList({
                   <Button>{title}</Button>
                 </NextChakraLink>
                 <img src={image} />
-                <Date dateString={date} />
+                <Text>{date}</Text>
               </Flex>
             </Box>
           ))}

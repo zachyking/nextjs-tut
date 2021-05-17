@@ -22,6 +22,8 @@ import {
   ModalBody,
   ModalCloseButton,
 } from "@chakra-ui/react"
+import { CollectionData, ContextualHref } from '../interfaces/interfaces'
+import { useContextualRouting } from '../contextual-modal/contextual-modal'
 // import { PageTransition } from 'next-page-transitions'
 
 export default function Home({
@@ -36,21 +38,46 @@ export default function Home({
 }) {
   const color = useColorModeValue("gray.50", "gray.900")
 
-  const router = useRouter()
+   const router = useRouter();
+   const { makeContextualHref, returnHref }: ContextualHref = useContextualRouting()
+   
+   const [collectionData, changeCollection] = useState<CollectionData>();
+   const [openedModal, changeModalState] = useState<boolean>(false);
+  
+   const fetchExampleCollection = async () => {
+       //changeCollection(getCollectionData(id.id))
+      const res = await fetch('/api/collections')
+      const data = await res.json() as CollectionData
+      console.log(data)
+      changeCollection(data)
+    }
 
-  const [openedModal, openModal] = useState(false);
-
-  return (
+   const openModal = (id: string) => {
+       fetchExampleCollection()
+       router.push(
+           makeContextualHref({ id: id }),
+           `/collections/${id}`,
+           {
+           shallow: true,
+           }
+       );
+       changeModalState(true)
+   }
+   const closeModal = () => {
+       router.push(returnHref, "/", { shallow: true });
+       changeModalState(false)
+   }
+   return (
     <>
-       <Modal size="xl" isOpen={openedModal} onClose={() => openModal(!openedModal)}>
+       <Modal size="xl" isOpen={openedModal} onClose={closeModal}>
         <ModalOverlay />
         <ModalContent>
           <ModalCloseButton />
           <ModalBody>
-            <Collection id="mysticwave"/> 
+            <Collection {...collectionData}/>
           </ModalBody>
           <ModalFooter>
-            <Button onClick={() => openModal(!openedModal)}>Close</Button>
+            <Button onClick={closeModal}>Close</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
@@ -72,9 +99,10 @@ export default function Home({
             bgColor={color}
             // className={utilStyles.collections}
             >
-              <Button onClick={() => openModal(!openedModal)}>Open</Button>
 
-              <CollectionList allCollectionsData={allCollectionsData}/>
+              <Button onClick={() => openModal("mysticwave")}>Example dialog</Button>
+     
+              {/* <CollectionList allCollectionsData={allCollectionsData}/> */}
             </Flex>
             <Flex 
             justify="center"
