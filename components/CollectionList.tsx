@@ -23,29 +23,19 @@ interface ContextualHref {
   
 }
 export default function CollectionList({
-  allCollectionsData
+  allCollectionsData,
+  openModal
 }: {
   allCollectionsData: {
     date: string
     title: string
     image: string
     id: string
-  }[]
+  }[],
+  openModal: (id: string) => void
 }) {
   const router = useRouter();
   const { makeContextualHref, returnHref }: ContextualHref = useContextualRouting();
-  
-  const openModal = () =>
-    router.push(
-      makeContextualHref({ id: 'mysticwave' }),
-      '/collections/mysticwave',
-      {
-        shallow: true,
-      }
-    );
-
-  const closeModal = () =>
-    router.push(returnHref, undefined, { shallow: true });
   
   
   return (
@@ -75,24 +65,25 @@ export default function CollectionList({
           align-items="center"
           justify-content="center"
           overflow-x="auto"
-          display={{ base: "column", md: "flex" }}
+          columns={[1,2,3]}
+          //display={{ base: "column", md: "flex" }}
 
         >
           {allCollectionsData.map(({ id, date, title, image }) => (
-            <Box key={id} borderRadius="2xl" padding={5} borderWidth="1px" display={{ base: "block", md: "inline-block" }}
-            w={["80vw", "40vw", "25vw"]} height="60vh" margin="auto" onClick={ openModal }> 
-              <Flex justify="center" display="column">
-
-                <NextChakraLink w="60%" margin="auto" //href={`/collections/${id}`} 
-                  href={makeContextualHref({ id: id })}
-                  as={`/collections/${id}`}
-                >
-                  <Button>{title}</Button>
-                </NextChakraLink>
-                <img src={image} />
-                <Text>{date}</Text>
-              </Flex>
-            </Box>
+             <Box key={id} borderRadius="2xl" padding={5} borderWidth="1px" display={{ base: "block", md: "inline-block" }}
+             w={["80vw", "40vw", "25vw"]} height="60vh" margin="auto" onClick={ () => openModal(id) } cursor="pointer"> 
+               <Flex justify="center" display="column">
+ 
+                  {/*<NextChakraLink w="60%" margin="auto" //href={`/collections/${id}`} 
+                    href={makeContextualHref({ id: id })}
+                    as={`/collections/${id}`}
+                  >*/}
+                    <Heading as="h3" size="md">{title}</Heading>
+                  {/*</NextChakraLink>*/}
+                  <img src={image} />
+                  <Date dateString={date}/>
+                </Flex>
+              </Box>
           ))}
         </SimpleGrid>
       </Flex>

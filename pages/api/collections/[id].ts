@@ -3,25 +3,24 @@ import path from 'path'
 import matter from 'gray-matter'
 import remark from 'remark'
 import html from 'remark-html'
-import { getCollectionData } from '../../lib/collections'
+import { getCollectionData } from '../../../lib/collections'
 
 import { NextApiRequest, NextApiResponse } from 'next'
-import { CollectionData } from "../../interfaces/interfaces"
-import Collection from '../../components/Collection'
+import { CollectionData } from "../../../interfaces/interfaces"
+import Collection from '../../../components/Collection'
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
   
-    const body = req.body
-    if (!body) res.status(400).json("no id provided")
+    const id = req.query.id
 
     let colData: CollectionData
 
-    switch(JSON.parse(body)){
+    switch(id){
         case "mysticwave": {
             colData = coll1Data
             break
         }
-        case "mysticwave3": {
+        case "mysticwave2": {
             colData = coll2Data
             break
         }

@@ -1,7 +1,7 @@
 ---
 title: 'Mystical wave'
-date: '2021-05-28'
-image: '/images/examplePic.png'
+date: '2021-06-28'
+image: '/card-wave4.svg'
 ---
 
 Next.js has two forms of pre-rendering: **Static Generation** and **Server-side Rendering**. The difference is in **when** it generates the HTML for a page.

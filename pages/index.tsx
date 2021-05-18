@@ -5,11 +5,13 @@ import { getSortedCollectionsData } from '../lib/collections'
 // import Link from 'next/link'
 import Date from '../components/date'
 import { GetStaticProps } from 'next'
-import { Flex, Stack, Heading, Button, useColorModeValue } from '@chakra-ui/react'
+
+import { Flex, Stack, Heading, Button, useColorModeValue, Box, SimpleGrid, Text } from '@chakra-ui/react'
 import Hero from '../components/Hero'
 import CollectionList from '../components/CollectionList'
 import ContactUs from '../components/ContactUs'
 import Footer from '../components/Footer'
+import NextChakraLink from '../components/NextChakraLink'
 import Collection from '../components/Collection'
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
@@ -44,16 +46,15 @@ export default function Home({
    const [collectionData, changeCollection] = useState<CollectionData>();
    const [openedModal, changeModalState] = useState<boolean>(false);
   
-   const fetchExampleCollection = async () => {
-       //changeCollection(getCollectionData(id.id))
-      const res = await fetch('/api/collections')
+   const fetchCollection = async (id: string) => {
+      //changeCollection(getCollectionData(id.id))
+      const res = await fetch(`/api/collections/${id}`)
       const data = await res.json() as CollectionData
-      console.log(data)
       changeCollection(data)
     }
 
    const openModal = (id: string) => {
-       fetchExampleCollection()
+       fetchCollection(id)
        router.push(
            makeContextualHref({ id: id }),
            `/collections/${id}`,
@@ -69,7 +70,7 @@ export default function Home({
    }
    return (
     <>
-       <Modal size="xl" isOpen={openedModal} onClose={closeModal}>
+       <Modal size="md" isOpen={openedModal} onClose={closeModal}>
         <ModalOverlay />
         <ModalContent>
           <ModalCloseButton />
@@ -94,15 +95,11 @@ export default function Home({
             </Head>
             <Hero></Hero>
             <Flex 
-            justify="center"
-            id="collections" 
-            bgColor={color}
-            // className={utilStyles.collections}
+              justify="center"
+              id="collections" 
+              bgColor={color}
             >
-
-              <Button onClick={() => openModal("mysticwave")}>Example dialog</Button>
-     
-              {/* <CollectionList allCollectionsData={allCollectionsData}/> */}
+              <CollectionList allCollectionsData={allCollectionsData} openModal={ openModal }/> 
             </Flex>
             <Flex 
             justify="center"

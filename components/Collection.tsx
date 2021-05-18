@@ -42,7 +42,7 @@ export default function Collection(collectionData: CollectionData) {
             >
 
                 <Box w="100%" mt={{ base: 4, md: 0 }} align="center" >
-                  <Image src="/images/examplePic.png" size="100%" rounded="1rem" shadow="2xl" />
+                  <Image src={collectionData.image} size="100%" rounded="1rem" shadow="2xl" />
                 </Box>
                 <Stack
                   spacing={4}
