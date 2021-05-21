@@ -1,79 +1,77 @@
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head'
+import { Flex, useColorModeValue } from '@chakra-ui/react'
 import Image from 'next/image'
-import styles from './layout.module.css'
+import mainStyles from './layout.module.css'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
+import DarkModeSwitch from './DarkModeSwitchMenu'
+import StickyNav from "react-sticky-nav";
+import Footer from './Footer';
 
-const name = 'dzcodes'
-export const siteTitle = 'Next.js Sample Website'
+export const siteTitle = 'Cardano Sounds NFT'
 
 export default function Layout({
   children,
-  home
+  home,
 }: {
   children: React.ReactNode
   home?: boolean
 }) {
+  const color = useColorModeValue("gray.50", "gray.900")
   return (
-    <div className={styles.container}>
-      <Head>
-        <link rel="icon" href="/favicon.ico" />
-        <meta
-          name="description"
-          content="Learn how to build a personal website using Next.js"
-        />
-        <meta
-          property="og:image"
-          content={`https://og-image.vercel.app/${encodeURI(
-            siteTitle
-          )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.zeit.co%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
-        />
-        <meta name="og:title" content={siteTitle} />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Head>
-      <header className={styles.header}>
-        {home ? (
-          <>
-            <Image
-              priority
-              src="/images/profile.jpeg"
-              className={utilStyles.borderCircle}
-              height={144}
-              width={144}
-              alt={name}
-            />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
-          </>
-        ) : (
-          <>
+    <Flex
+      direction="column"
+     // align="top"
+      w="100vw"
+      minH="100%"
+      m="0 auto"
+      
+    >
+      <div className={mainStyles.container}>
+        <Head >
+          <link rel="icon" href="/card-wave2.svg" />
+          <meta
+            name="description"
+            content="Get music clip NFT with original sound on Cardano blockchain!"
+          />
+          <meta
+            property="og:image"
+            content="https://cryptologos.cc/logos/cardano-ada-logo.svg?v=010"
+          />
+          <meta name="og:title" content={siteTitle} />
+          <meta name="twitter:card" content="summary_large_image" />
+        </Head>
+        <header  className={mainStyles.header}>
+          <StickyNav className={mainStyles.stickyNav}>
+            <DarkModeSwitch />
+          </StickyNav>
+        </header>
+          <main >{children}</main>
+        {!home && (
+          <div className={mainStyles.backToHome}>
             <Link href="/">
-              <a>
-                <Image
-                  priority
-                  src="/images/profile.jpg"
-                  className={utilStyles.borderCircle}
-                  height={108}
-                  width={108}
-                  alt={name}
-                />
-              </a>
+              <a>← Back to home</a>
             </Link>
-            <h2 className={utilStyles.headingLg}>
-              <Link href="/">
-                <a className={utilStyles.colorInherit}>{name}</a>
-              </Link>
-            </h2>
-          </>
+          </div>
         )}
-      </header>
-      <main>{children}</main>
-      {!home && (
-        <div className={styles.backToHome}>
-          <Link href="/">
-            <a>← Back to home</a>
-          </Link>
-        </div>
-      )}
-    </div>
+
+      </div>
+      <Flex 
+        justify="center"
+        align="bottom"
+        bgColor={color}
+        w="100vw"
+        position="relative"
+        bottom="0"
+        left="0"
+        right="0"
+        z-index="0"
+      >
+        <Footer></Footer>
+      </Flex>
+
+    </Flex>
+
   )
 }
