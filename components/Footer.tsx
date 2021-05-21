@@ -18,8 +18,8 @@ export default function Footer() {
             display="column"
             align="center"
             justify="center"
-            mb={12}
-            minH="5vw"
+            minH="5vh"
+            mb="2vh"
         >
             
             <Stack

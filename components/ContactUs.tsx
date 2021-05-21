@@ -5,7 +5,8 @@ import {
   Flex,
   Heading,
   Stack,
-  IconButton
+  IconButton,
+  Text
 } from "@chakra-ui/react"
  
 export default function ContacUs() {
@@ -15,70 +16,50 @@ export default function ContacUs() {
             display="column"
             align="center"
             justify="center"
-            minH="50vw"
-            mb={12}
+            minH="60vh"
         >
             <Stack
-              spacing={2}
+              spacing={6}
               w={{ base: "80%", md: "80%" }}
               align="center"
               margin="auto"
             >
-                <Heading
-                as="h2"
+                <Text size="xl"
+                  textAlign="center"
+                >Our goal is to bring more audio artists to NFT space,</Text>
+
+                <Text size="xl"
+                  textAlign="center"
+                >by building strong community driven platform to trade, collect, create and share non-fungible tokens with audio <a href="medium.com">... read more</a></Text>
+
+                <Text
                 size="md"
                 fontWeight="normal"
                 // color="primary.800"
-                mt="50%"
                 textAlign="center"
                 >
-                    Do you have any idea what we could do better?
-                </Heading>
-                <Heading
-                as="h2"
-                size="xl"
+                    Do you want to collaborate, have any good idea, or is there something for us to get better at?
+                </Text>
+                <Text
+                size="md"
                 // color="primary.800"
                 fontWeight="normal"
                 lineHeight={2}
                 textAlign="center"
                 >
-                Let us know!
-                </Heading>
-                <NextChakraLink href="/">
+                  Let us know! We value every message.
+                </Text>
+                <NextChakraLink href="mailto: cardanosounds@gmail.com"
+                >
                     <Button
                     borderRadius="8px"
                     py={4}
                     // lineHeight={0.75}
                     size="md"
                     aria-label="email"
-
                     >Email</Button>
                 </NextChakraLink>
             </Stack>
-
-            {/* <Heading
-                as="h2"
-                size="xl"
-                fontWeight="normal"
-                textAlign="center"
-                display="block"
-
-                my={20}
-            >
-                Do you have an idea what we could do better?
-            </Heading> 
-            <NextChakraLink href="mailto: cardanosounds@gmail.com">
-                <Button
-                  borderRadius="8px"
-                  py={4}
-                  lineHeight={0.75}
-                  size="md"
-                  aria-label="Contact us"
-                  z-index={-1}
-
-                >Contact us!</Button>
-            </NextChakraLink> */}
-
 
         </Flex>
       </>

@@ -1,57 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head'
-import { Flex } from '@chakra-ui/react'
+import { Flex, useColorModeValue } from '@chakra-ui/react'
 import Image from 'next/image'
 import mainStyles from './layout.module.css'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 import DarkModeSwitch from './DarkModeSwitchMenu'
 import StickyNav from "react-sticky-nav";
+import Footer from './Footer';
 
-const name = 'dzcodes'
 export const siteTitle = 'Cardano Sounds NFT'
 
 export default function Layout({
   children,
-  home
+  home,
 }: {
   children: React.ReactNode
   home?: boolean
 }) {
-  // useEffect(() => { 
-    
-  //    var prevScrollpos = window.pageYOffset;
-  // window.onscroll = function() {
-  // var currentScrollPos = window.pageYOffset;
-  //   if (prevScrollpos > currentScrollPos) {
-  //     console.log("navbar:")
-  //     console.log("nemiziiim")
-  //     document.getElementById("navbar").style.marginTop = "0px";
-  //   } else {
-  //     console.log("navbar:")
-  //     console.log("miziiim")
-  //     document.getElementById("navbar").style.marginTop = "-800px";
-  //   }
-  //   prevScrollpos = currentScrollPos;
-  // }}, [])
-  // useEffect(() => {
-  //   const script = document.createElement("script");
-  //   script.src = "http://localhost:8080/bundle.js";
-  //   script.async = true;
-  //   document.body.appendChild(script);
-  // },[])
-
+  const color = useColorModeValue("gray.50", "gray.900")
   return (
     <Flex
       direction="column"
-      align="top"
+     // align="top"
       w="100vw"
-    
-      // maxW={{
-      //   base: "auto", // 0-80em
-      //   xl: "60em" // 80em+
-      // }}
+      minH="100%"
       m="0 auto"
+      
     >
       <div className={mainStyles.container}>
         <Head >
@@ -68,31 +43,33 @@ export default function Layout({
           <meta name="twitter:card" content="summary_large_image" />
         </Head>
         <header  className={mainStyles.header}>
-          {/* <Flex
-            direction="column"
-            align="top"
-            maxW={{
-              base: "auto", // 0-80em
-              xl: "60em" // 80em+
-            }}
-            m="0 auto"
-          > */}
-            <StickyNav className={mainStyles.stickyNav}>
-              <DarkModeSwitch/>
-            </StickyNav>
-          {/* </Flex> */}
+          <StickyNav className={mainStyles.stickyNav}>
+            <DarkModeSwitch />
+          </StickyNav>
         </header>
-        
-          <main>{children}</main>
-        {/* </Flex> */}
+          <main >{children}</main>
         {!home && (
           <div className={mainStyles.backToHome}>
             <Link href="/">
               <a>← Back to home</a>
             </Link>
           </div>
-        )}   
+        )}
+
       </div>
+      <Flex 
+        justify="center"
+        align="bottom"
+        bgColor={color}
+        w="100vw"
+        position="relative"
+        bottom="0"
+        left="0"
+        right="0"
+        z-index="0"
+      >
+        <Footer></Footer>
+      </Flex>
 
     </Flex>
 

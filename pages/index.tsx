@@ -70,7 +70,7 @@ export default function Home({
    }
    return (
     <>
-       <Modal size="md" isOpen={openedModal} onClose={closeModal}>
+       <Modal size="xl" isOpen={openedModal} onClose={closeModal}>
         <ModalOverlay />
         <ModalContent>
           <ModalCloseButton />
@@ -106,14 +106,6 @@ export default function Home({
             id="contact" 
             >
               <ContactUs />
-            </Flex>
-
-            <Flex 
-              justify="center"
-              bgColor={color}
-            >
-
-              <Footer></Footer>
             </Flex>
           </Layout> 
         </Flex>

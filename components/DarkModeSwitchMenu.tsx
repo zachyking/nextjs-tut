@@ -11,7 +11,17 @@ export default function DarkModeSwitch() {
     const { colorMode, toggleColorMode } = useColorMode()
     const isDark = colorMode === 'dark'
     const [display, changeDisplay] = useState('none')
-    
+
+    const closeMenu = () => { 
+      changeDisplay('none')
+      document.getElementsByTagName('body')[0].style.overflow = 'visible'
+    }
+
+    const openMenu = () => { 
+      changeDisplay('flex')
+      document.getElementsByTagName('body')[0].style.overflow = 'hidden'
+    }
+
     useEffect(() => { 
     
       var prevScrollpos = window.pageYOffset;
@@ -113,7 +123,7 @@ export default function DarkModeSwitch() {
                     size="lg"
                     icon={<HamburgerIcon />}
                     display={['flex', 'flex', 'none', 'none']}
-                    onClick={ () => changeDisplay('flex')}
+                    onClick={ openMenu }
                   />
                   <Flex right={0}>
                     <IconButton 
@@ -135,13 +145,13 @@ export default function DarkModeSwitch() {
             <Flex
               w="100vw"
               bgColor={isDark ? ("gray.900") : ("gray.50")}
-              zIndex={20}
+              zIndex="dropdown"
               h="100vh"
-              pos="fixed"
+              pos="relative"
               top="0"
               left="0"
               display={display}
-              overflowY="auto"
+              overflow="hidden"
               flexDir="column"
               as="nav"
             >
@@ -156,7 +166,7 @@ export default function DarkModeSwitch() {
                       icon={
                           <CloseIcon />
                       }
-                      onClick={ () => changeDisplay('none')}
+                      onClick={closeMenu}
                     />
                 </Flex>
                 <Flex
@@ -169,7 +179,7 @@ export default function DarkModeSwitch() {
                           aria-label="Home"
                           my={5}
                           w="100%"
-                          onClick={ () => changeDisplay('none')}
+                          onClick={closeMenu}
                         >Home</Button>
                     </NextChakraLink>
                     <NextChakraLink  href="#collections">
@@ -178,7 +188,7 @@ export default function DarkModeSwitch() {
                           aria-label="Collections"
                           my={5}
                           w="100%"
-                          onClick={ () => changeDisplay('none')}
+                          onClick={closeMenu}
                         >Collections</Button>
                     </NextChakraLink>
                     {/* <NextChakraLink href="/collections/mysticwave">
@@ -196,7 +206,7 @@ export default function DarkModeSwitch() {
                           aria-label="Contact"
                           my={5}
                           w="100%"
-                          onClick={ () => changeDisplay('none')}
+                          onClick={ closeMenu }
                         >Contact</Button>
                     </NextChakraLink>
                     <NextChakraLink href="/sale" className={mainStyles.disableEvents}>
@@ -210,7 +220,7 @@ export default function DarkModeSwitch() {
                             aria-label="Sale"
                             my={5}
                             w="100%"
-                            onClick={ () => changeDisplay('none')}
+                            onClick={ closeMenu}
                         >Sale</Button>
                         <h2 className={mainStyles.rotate} >
                           Coming Soon!

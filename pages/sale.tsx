@@ -3,61 +3,104 @@ import Head from 'next/head'
 import Layout, { siteTitle } from '../components/layout'
 import React from "react"
 import NextChakraLink from '../components/NextChakraLink'
+import { SearchIcon } from '@chakra-ui/icons'
 import {
   Button,
+  Text,
   Flex,
   Heading,
   Stack,
-  IconButton
+  IconButton,
+  InputGroup,
+  Input,
+  InputRightElement,
+  Progress
 } from "@chakra-ui/react"
 
-export default function Sale() {
+export default function Sale( 
+  saleParams: { 
+    status: string
+    iconFrom: string
+    iconTo: string
+}) {
+    const [searchValue, handleSearchValChange] = useState<string>("")
+    const [isSearchValid, validateSearchString] = useState<boolean>(true)
 
-    const [data,setData] = useState<string>(""); 
+    const search = async () => {
+      if(searchValue.length < 12 || !searchValue.startsWith('addr')){
+        validateSearchString(false)
+        console.log("1" + searchValue)
+      }
+      else{
 
+        validateSearchString(true)
+        console.log("2" + searchValue)
+      }
+    }
     useEffect(() => {
-        // An instance of EventSource by passing the events URL
-        const eventSource = new EventSource('/api/sale');
-        // A function to parse and update the data state
-        const updateData = (messageEvent: MessageEvent) => {
-            console.log('log')
-            setData(messageEvent.data);
-            if (messageEvent.data === "finished" || messageEvent.data === "error") {
-                eventSource.close();
-            }
-        };
-
-        // eventSource now listening to all the events named 'message'
-        eventSource.addEventListener('message', updateData);
-        // Unsubscribing to the event stream when the component is unmounted
-        return () => eventSource.close();
+      const elem = document.body
+      if (elem) {
+        elem.addEventListener("keyup", ({key}) => {
+        if (key === "Enter") {
+          search()
+        }
+      })}
     }, []);
-  
+
     return (
     <>
-        <Flex
-            display="column"
+        <Layout home>
+          <Head>
+            <title>Cardano Sounds NFT Sale</title>
+          </Head>
+
+          <Stack
+            spacing={2}
+            mt={24}
+            marginX="auto"
+            w="80%"
             align="center"
-            justify="center"
-            minH="50vw"
-            mb={12}
-        >
-            <Stack
-              spacing={2}
-              w={{ base: "80%", md: "80%" }}
-              align="center"
-              margin="auto"
+          >
+            <Text
+              size="xl"
+              textAlign="center"
             >
+              Send 50ADA to: addr115659556363454rsdfgb363454rsd
+            </Text>
+            <Text
+              size="md"
+              fontWeight="light"
+              color="red.50"
+              textAlign="center"
+            >
+              Use Yoroi or Daedalus, do not send ADA from an exchange! Send the exact amount without additional tokens. 
+            </Text>
+            <Text
+              as="h3"
+              size="s"
+              fontWeight="light"
+              color="red.50"
+              textAlign="center"
+            >
+              If you want to buy more NFTs, send multiple transactions with 50ADA.  
+            </Text>
+            <InputGroup  
+            >
+              <Input placeholder="Check status for txid" 
+                id="searchInput"
+                isInvalid={isSearchValid}
+                onChange={ (param) => handleSearchValChange(param.target.value) }
+              />
+              <InputRightElement onClick={ search } children={<SearchIcon color="gray.500" />} />
+           </InputGroup>
+           <div dangerouslySetInnerHTML={{ __html: saleParams.iconFrom }} /> 
 
-            
-                <div>
-                    <ul>
-                        <li>{data}</li>
-                    </ul>
-                </div>
-            </Stack>
+           <Progress size="xl" isIndeterminate />
 
-        </Flex>
+           <div dangerouslySetInnerHTML={{ __html: saleParams.iconTo }} />             
+          </Stack>
+
+        </Layout>
     </>
   )
 }

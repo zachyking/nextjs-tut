@@ -17,7 +17,6 @@
     "fs": "*",
     "gray-matter": "^4.0.3",
     "next": "^10.0.0",
-    "next-page-transitions": "*",
     "qs-stringify": "^1.2.1",
     "query-string": "^7.0.0",
     "react": "17.0.1",
