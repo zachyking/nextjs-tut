@@ -6,7 +6,8 @@ import {
   Heading,
   Stack,
   IconButton,
-  Text
+  Text,
+  Image
 } from "@chakra-ui/react"
  
 export default function ContacUs() {
@@ -16,21 +17,23 @@ export default function ContacUs() {
             display="column"
             align="center"
             justify="center"
-            minH="60vh"
         >
             <Stack
-              spacing={6}
+              spacing={{ base: 2, md: 6 }}
               w={{ base: "80%", md: "80%" }}
+              text-align="center"
               align="center"
-              margin="auto"
+              margin="10vh auto"
+              horizontal-align="middle"
             >
+                <a><Image src="/cardanosound-coin.svg" size="md" /></a>
                 <Text size="xl"
                   textAlign="center"
                 >Our goal is to bring more audio artists to NFT space,</Text>
 
                 <Text size="xl"
                   textAlign="center"
-                >by building strong community driven platform to trade, collect, create and share non-fungible tokens with audio <a href="medium.com">... read more</a></Text>
+                >by building strong community driven platform to trade, collect, create and share non-fungible tokens with audio <a href="https://medium.com">... read more</a></Text>
 
                 <Text
                 size="md"
