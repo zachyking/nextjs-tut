@@ -26,7 +26,7 @@ export default function ContacUs() {
               margin="10vh auto"
               horizontal-align="middle"
             >
-                <a><Image src="/cardanosound-coin.svg" size="md" /></a>
+                <Image src="/cardanosound-coin.svg" size="md" />
                 <Text size="xl"
                   textAlign="center"
                 >Our goal is to bring more audio artists to NFT space,</Text>
