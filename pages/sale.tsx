@@ -26,9 +26,9 @@ export default function Sale(
     const [searchValue, handleSearchValChange] = useState<string>("")
     const [isSearchValid, validateSearchString] = useState<boolean>(true)
 
-    const search = async () => {
+    const search = () => {
       if(searchValue.length < 12 || !searchValue.startsWith('addr')){
-        validateSearchString(false)
+        // validateSearchString(false)
         console.log("1" + searchValue)
       }
       else{
@@ -55,7 +55,7 @@ export default function Sale(
           </Head>
 
           <Stack
-            spacing={2}
+            spacing={6}
             mt={24}
             marginX="auto"
             w="80%"
@@ -70,7 +70,7 @@ export default function Sale(
             <Text
               size="md"
               fontWeight="light"
-              color="red.50"
+              color="red.600"
               textAlign="center"
             >
               Use Yoroi or Daedalus, do not send ADA from an exchange! Send the exact amount without additional tokens. 
@@ -79,7 +79,7 @@ export default function Sale(
               as="h3"
               size="s"
               fontWeight="light"
-              color="red.50"
+              color="red.600"
               textAlign="center"
             >
               If you want to buy more NFTs, send multiple transactions with 50ADA.  
@@ -89,6 +89,7 @@ export default function Sale(
               <Input placeholder="Check status for txid" 
                 id="searchInput"
                 isInvalid={isSearchValid}
+                value={searchValue}
                 onChange={ (param) => handleSearchValChange(param.target.value) }
               />
               <InputRightElement onClick={ search } children={<SearchIcon color="gray.500" />} />

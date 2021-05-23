@@ -10,3 +10,10 @@ export interface CollectionData {
     image: string
     contentHtml: string
 }
+
+export interface SaleTxData {
+    txid: string,
+    iconFrom: string,
+    iconTo: string,
+    status: string
+}

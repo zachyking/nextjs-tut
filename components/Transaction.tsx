@@ -11,6 +11,8 @@ import {
   IconButton
 } from "@chakra-ui/react"
 
+
+
 export default function Transaction(id: string) {
 
     const [data,setData] = useState<string>(""); 
