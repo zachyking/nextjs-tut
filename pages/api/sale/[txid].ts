@@ -10,7 +10,9 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
         'Connection': 'keep-alive',
     });
 
-    const txid = req.query.txid
+    const { txid } = req.query 
+
+    //console.log(Array.isArray(txid) ? txid[0] : txid) 
 
     const randNum: number = Math.random()
 
@@ -18,18 +20,18 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
         if(randNum >= 0.4) {
           if(randNum >= 0.6) {
               if(randNum >= 0.8) {
-                data = `${ txid } done`
+                data = txid + ' done'
               }
               else {
-                data = `music generated for ${ txid }`
+                data = 'music generated for ' + txid
               } 
           }
           else {
-              `waiting for sound generation ${ txid }`
+              'waiting for sound generation ' + txid
           } 
         }
         else {
-            `transaction ${ txid } received`
+            'transaction ' + txid + ' received'
         } 
     }
     else data = "bla"
@@ -41,7 +43,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
             res.write('\n\n')
             res.end()
         },
-        2000
+        1000
     )
     dataNum++
 }

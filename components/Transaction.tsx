@@ -2,27 +2,31 @@ import { useState, useEffect } from 'react'
 import Head from 'next/head'
 import Layout, { siteTitle } from '../components/layout'
 import React from "react"
+import { TxStatusData } from "../interfaces/interfaces"
 import NextChakraLink from '../components/NextChakraLink'
 import {
   Button,
   Flex,
   Heading,
   Stack,
-  IconButton
+  IconButton, 
+  Progress
 } from "@chakra-ui/react"
 
 
 
-export default function Transaction(id: string) {
+export default function Transaction({ id } : {id: string}) {
 
-    const [data,setData] = useState<string>(""); 
-
+    const [data,setData] = useState<string>(); 
+    
     useEffect(() => {
         // An instance of EventSource by passing the events URL
         const eventSource = new EventSource(`/api/sale/${id}`);
+        console.log(id)
+        console.log(`/api/sale/${id}`)
         // A function to parse and update the data state
         const updateData = (messageEvent: MessageEvent) => {
-            console.log('log')
+            console.log(messageEvent.data)
             setData(messageEvent.data);
             if (messageEvent.data === "finished" || messageEvent.data === "error") {
                 eventSource.close();
@@ -41,12 +45,10 @@ export default function Transaction(id: string) {
             display="column"
             align="center"
             justify="center"
-            minH="50vw"
-            mb={12}
+            minH="50vh"
         >
             <Stack
-              spacing={2}
-              w="80%"
+              spacing={6}
               align="center"
               margin="auto"
             >
@@ -56,10 +58,24 @@ export default function Transaction(id: string) {
                     size="xl"
                     textAlign={["center", "center", "left", "left"]}
                 >
-                    Cardano Sounds
+                    Mystical Waves
                 </Heading>
+                <Heading
+                    as="h2"
+                    size="lg"
+                    textAlign={["center", "center", "left", "left"]}
+                >
+                    limited NFT collection sale
+                </Heading>
+                <p>{data}</p>
+
+                {/*<div dangerouslySetInnerHTML={{ __html: data.iconFrom }} /> */}
+
+
+                {/* <div dangerouslySetInnerHTML={{ __html: data.iconTo }} />  */}  
             
             </Stack>
+            { data !== id + " done" ? <Progress size="xs" isIndeterminate /> : <></>}
 
         </Flex>
     </>

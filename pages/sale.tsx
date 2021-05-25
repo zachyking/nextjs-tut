@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Head from 'next/head'
 import Layout, { siteTitle } from '../components/layout'
+import Transaction from "../components/Transaction"
 import React from "react"
 import NextChakraLink from '../components/NextChakraLink'
 import { SearchIcon } from '@chakra-ui/icons'
@@ -17,24 +18,21 @@ import {
   Progress
 } from "@chakra-ui/react"
 
-export default function Sale( 
-  saleParams: { 
-    status: string
-    iconFrom: string
-    iconTo: string
-}) {
-    const [searchValue, handleSearchValChange] = useState<string>("")
-    const [isSearchValid, validateSearchString] = useState<boolean>(true)
+export default function Sale() {
+    const [ searchValue, handleSearchValChange] = useState<string>("")
+    const [ isSearchValid, validateSearchString] = useState<boolean>(true)
+    const [ txStatus, showTxStatus ] = useState<boolean>(false)
 
     const search = () => {
       if(searchValue.length < 12 || !searchValue.startsWith('addr')){
-        // validateSearchString(false)
-        console.log("1" + searchValue)
+        validateSearchString(false)
+        //console.log("1" + searchValue)
       }
       else{
 
         validateSearchString(true)
-        console.log("2" + searchValue)
+        showTxStatus(true)
+        //console.log("2" + searchValue)
       }
     }
     useEffect(() => {
@@ -53,19 +51,21 @@ export default function Sale(
           <Head>
             <title>Cardano Sounds NFT Sale</title>
           </Head>
-
+          { !txStatus ? 
           <Stack
             spacing={6}
             mt={24}
+            mb={0}
             marginX="auto"
             w="80%"
+            minH="70vh"
             align="center"
           >
             <Text
               size="xl"
               textAlign="center"
             >
-              Send 50ADA to: addr115659556363454rsdfgb363454rsd
+              Send 50ADA to: addr115659556363454rsdfgb363454rsd9556363454rsdfgb363454r
             </Text>
             <Text
               size="md"
@@ -94,13 +94,22 @@ export default function Sale(
               />
               <InputRightElement onClick={ search } children={<SearchIcon color="gray.500" />} />
            </InputGroup>
-           <div dangerouslySetInnerHTML={{ __html: saleParams.iconFrom }} /> 
-
-           <Progress size="xl" isIndeterminate />
-
-           <div dangerouslySetInnerHTML={{ __html: saleParams.iconTo }} />             
+                   
+          </Stack>
+          :
+          <Stack
+            spacing={6}
+            mt={24}
+            marginX="auto"
+            w="80%"
+            align="center"
+          >
+            <Transaction id={searchValue}/>
+            <Button onClick={() => showTxStatus(false)}>Look up another</Button>
           </Stack>
 
+          }
+          
         </Layout>
     </>
   )

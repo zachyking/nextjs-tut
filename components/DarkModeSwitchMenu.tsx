@@ -7,7 +7,7 @@ import mainStyles from './layout.module.css'
 // import { MoonIcon, SunIcon } from '@chakra-ui/icons'
 
 
-export default function DarkModeSwitch() {
+export default function DarkModeSwitchMenu({ home }: { home?: boolean }) {
     const { colorMode, toggleColorMode } = useColorMode()
     const isDark = colorMode === 'dark'
     const [display, changeDisplay] = useState('none')
@@ -72,7 +72,7 @@ export default function DarkModeSwitch() {
                             w="100%"
                           >Home</Button>
                       </NextChakraLink>
-                      <NextChakraLink href="#collections">
+                      <NextChakraLink href={ home ? "#collections": "/#collections"}>
                           <Button
                             variant="ghost"
                             aria-label="Collections"
@@ -88,7 +88,7 @@ export default function DarkModeSwitch() {
                             w="100%"
                           >Mystic waves</Button>
                       </NextChakraLink> */}
-                      <NextChakraLink href="#contact">
+                      <NextChakraLink href={ home ? "#contact": "/#contact"}>
                           <Button
                             variant="ghost"
                             aria-label="Contact"
@@ -96,7 +96,8 @@ export default function DarkModeSwitch() {
                             w="100%"
                           >Contact</Button>
                       </NextChakraLink>
-                      <NextChakraLink href="/sale" className={mainStyles.disableEvents}>
+                      {/*className={mainStyles.disableEvents}>*/}
+                      <NextChakraLink href="/sale"> 
                         <Flex
                           align="center"
                           display="flex"

@@ -11,8 +11,7 @@ export interface CollectionData {
     contentHtml: string
 }
 
-export interface SaleTxData {
-    txid: string,
+export interface TxStatusData {
     iconFrom: string,
     iconTo: string,
     status: string
