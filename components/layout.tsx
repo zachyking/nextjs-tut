@@ -1,79 +1,68 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import styles from './layout.module.css'
-import utilStyles from '../styles/utils.module.css'
-import Link from 'next/link'
+import { Flex, useColorModeValue, Text, IconButton, Spacer } from '@chakra-ui/react'
+import mainStyles from './layout.module.css'
+import Logo from './Logo';
+import DarkModeSwitchMenu from './DarkModeSwitchMenu';
 
-const name = 'dzcodes'
-export const siteTitle = 'Next.js Sample Website'
+export const siteTitle = 'Cardano Sounds NFT'
 
 export default function Layout({
   children,
-  home
+  home,
 }: {
   children: React.ReactNode
   home?: boolean
 }) {
+  const color = useColorModeValue("gray.900", "gray.50")
   return (
-    <div className={styles.container}>
-      <Head>
-        <link rel="icon" href="/favicon.ico" />
-        <meta
-          name="description"
-          content="Learn how to build a personal website using Next.js"
-        />
-        <meta
-          property="og:image"
-          content={`https://og-image.vercel.app/${encodeURI(
-            siteTitle
-          )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.zeit.co%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
-        />
-        <meta name="og:title" content={siteTitle} />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Head>
-      <header className={styles.header}>
-        {home ? (
-          <>
-            <Image
-              priority
-              src="/images/profile.jpeg"
-              className={utilStyles.borderCircle}
-              height={144}
-              width={144}
-              alt={name}
-            />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
-          </>
-        ) : (
-          <>
-            <Link href="/">
-              <a>
-                <Image
-                  priority
-                  src="/images/profile.jpg"
-                  className={utilStyles.borderCircle}
-                  height={108}
-                  width={108}
-                  alt={name}
-                />
-              </a>
-            </Link>
-            <h2 className={utilStyles.headingLg}>
-              <Link href="/">
-                <a className={utilStyles.colorInherit}>{name}</a>
-              </Link>
-            </h2>
-          </>
-        )}
-      </header>
-      <main>{children}</main>
-      {!home && (
-        <div className={styles.backToHome}>
-          <Link href="/">
-            <a>← Back to home</a>
-          </Link>
-        </div>
-      )}
-    </div>
+    <Flex
+      direction="column"
+     // align="top"
+      w="100vw"
+      minH="100vh"
+      //background="linear-gradient(90deg, rgba(26,32,44,1) 0%, rgba(45,55,72,1) 100%), linear-gradient(90deg, rgba(247,250,252,1) 0%, rgba(237,242,247,1) 100%)"
+      //backgroundPosition="top, bottom"
+     // backgroundSize="100vw 10vw, 100vw 80vw"
+      //minH="100%"
+      m="0 auto"
+    >
+      <div className={mainStyles.container}>
+        <Head >
+          <link rel="icon" href="/card-wave2.svg" />
+          <meta
+            name="description"
+            content="Get music clip NFT with original sound on Cardano blockchain!"
+          />
+          <meta
+            property="og:image"
+            content="https://cryptologos.cc/logos/cardano-ada-logo.svg?v=010"
+          />
+          <meta name="og:title" content={siteTitle} />
+          <meta name="twitter:card" content="summary_large_image" />
+        </Head>
+        <header  className={mainStyles.header}>
+          
+          <Flex direction="row" className={mainStyles.stickyNav}>
+              
+              <DarkModeSwitchMenu home={home} />
+          </Flex>
+        </header>
+          <main >{children}</main>
+          <Spacer />
+          <Text 
+            left="0"
+            bottom={{ base: "3vh", md: "5vh"}}
+            position={home ? "fixed" : ["initial", "initial", "initial", "initial", "fixed"]}
+            my="5vh"
+            right="0"
+            textAlign="center" 
+            fontSize={{ base: "0.65rem", md: "1.125rem" }}
+            fontFamily="Share Tech Mono, monospace"
+            transition="all 0.3s ease-in-out"
+          >ALL RIGHTS RESERVED ©CARDANOSOUNDS
+          </Text>
+      </div>
+    </Flex>
+
   )
 }
