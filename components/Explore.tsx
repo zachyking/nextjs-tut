@@ -23,8 +23,8 @@ export default function Explore({ goBackFunc } : { goBackFunc : Function }) {
                     fontSize={["0.625rem", "0.75rem", "0.8rem", "0.9rem", "1.25rem", "1.75rem"]} 
                     textAlign="left" 
                     minH={["20vh", "20vh", "50vh"]}
-                    mb={["0vh", "0vh", "5vh"]}
-                    mt={["10vh", "10vh", "unset"]}
+                    mb={["0vh", "0vh", "0vh", "0vh", "5vh"]}
+                    mt={["25vh", "25vh", "15vh", "unset"]}
                 >
                   <Flex>
                     <Text>
@@ -41,8 +41,8 @@ export default function Explore({ goBackFunc } : { goBackFunc : Function }) {
                   </Text>
                   <Spacer/> 
                 </Flex>
-                {/*<Spacer/>*/}
-                <Flex direction="column" w={{ base: "80vw", md: "20vw" }} textColor="gray.600">
+                <Spacer/>
+                <Flex direction="column" mt={["unset", "2.5vh", "unset"]} w={{ base: "80vw", md: "20vw" }} textColor="gray.600">
                   <Popover>
                     <PopoverTrigger>
                       <IconButton variant="ghost" 
@@ -61,10 +61,10 @@ export default function Explore({ goBackFunc } : { goBackFunc : Function }) {
                       <PopoverArrow />
                       <PopoverCloseButton />
                         <PopoverHeader><Logo size="2em" color={ isDark ? "gray.50" : "gray.900" }/></PopoverHeader>
-                      <PopoverBody><Text fontSize="1rem"> By getting our NFT you are supporting development of Cardano Sounds platform</Text></PopoverBody>
+                      <PopoverBody><Text fontSize={["0.8em", "0.85em", "1em" ]}> By getting our NFT you are supporting development of Cardano Sounds platform</Text></PopoverBody>
                     </PopoverContent>
                   </Popover>
-                  <NextChakraLink href="/">
+                  <NextChakraLink href="/buy">
                     <Button 
                       width={["70vw", "70vw", "25vw", "25vw", "25vw", "25vw" ]}
                       mt={["1vh", "1vh", "5vh"]}
