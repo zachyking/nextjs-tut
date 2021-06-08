@@ -74,7 +74,3 @@
 .linkLight:hover {
   text-shadow: 1px 1px #fff;
 }
-
-.pointerOnHover:hover {
-  cursor: pointer;
-}
