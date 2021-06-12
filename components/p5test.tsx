@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import p5, { FFT, Image, SoundFile, Vector } from 'p5'
+import p5, { FFT, Image, SoundFile, Vector } from '../p5'
 import "../p5.sound.js"
 
 
