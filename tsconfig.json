@@ -20,6 +20,8 @@
   },
   "include": [
     "next-env.d.ts",
+    "p5",
+    "p5.sound.js",
     "**/*.ts",
     "**/*.tsx"
   ],
